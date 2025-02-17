@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "title": "Web Development Basics",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "price": 50,
+    "description": "An introductory course on web development covering HTML, CSS, and JavaScript.",
+    "image": "https://i.ibb.co.com/CpC4X10P/blog-visuals-12.webp",
+    "status": "pending"
+  },
+  {
+    "id": 2,
+    "title": "Advanced Python Programming",
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "price": 80,
+    "description": "Learn advanced Python concepts including OOP, data structures, and algorithms.",
+    "image": "https://i.ibb.co.com/DD92StwY/Python-Advanced-1-400x300.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 3,
+    "title": "React for Beginners",
+    "name": "Alice Johnson",
+    "email": "alicejohnson@example.com",
+    "price": 70,
+    "description": "Get started with React and build dynamic web applications.",
+    "image": "https://i.ibb.co.com/hJVgYvBX/Untitled.png",
+    "status": "pending"
+  },
+  {
+    "id": 4,
+    "title": "Data Science with Python",
+    "name": "Michael Brown",
+    "email": "michaelbrown@example.com",
+    "price": 90,
+    "description": "Analyze and visualize data using Python libraries like Pandas and Matplotlib.",
+    "image": "https://i.ibb.co.com/fVvhxn4W/1-Lx-P1qw-Pj-HE1-CDFm-LBh3bx-Q.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Design Fundamentals",
+    "name": "Emily Davis",
+    "email": "emilydavis@example.com",
+    "price": 60,
+    "description": "Learn the basics of user interface and user experience design.",
+    "image": "https://i.ibb.co.com/VYSz2x1w/blog-ui-ux-150223.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 6,
+    "title": "Machine Learning Basics",
+    "name": "Robert Wilson",
+    "email": "robertwilson@example.com",
+    "price": 120,
+    "description": "Understand the fundamentals of machine learning and build models.",
+    "image": "https://i.ibb.co.com/sJzQyn05/0-lq-Ab-T5d5-HUbgb1-UO.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 7,
+    "title": "Cybersecurity Essentials",
+    "name": "Sophia Martinez",
+    "email": "sophiamartinez@example.com",
+    "price": 85,
+    "description": "Learn cybersecurity principles to protect systems and networks.",
+    "image": "https://i.ibb.co.com/SDyGDs9M/Adobe-Stock-186885581.webp",
+    "status": "pending"
+  },
+  {
+    "id": 8,
+    "title": "Mobile App Development",
+    "name": "David Clark",
+    "email": "davidclark@example.com",
+    "price": 95,
+    "description": "Build mobile applications using Flutter and React Native.",
+    "image": "https://i.ibb.co.com/m5Z13p4H/1711974550479.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 9,
+    "title": "Cloud Computing Basics",
+    "name": "Olivia Lewis",
+    "email": "olivialewis@example.com",
+    "price": 75,
+    "description": "Learn about cloud services, AWS, and deployment strategies.",
+    "image": "https://i.ibb.co.com/p6r3YKwV/Cloud-Computing.webp",
+    "status": "pending"
+  },
+  {
+    "id": 10,
+    "title": "JavaScript Advanced Concepts",
+    "name": "Daniel Walker",
+    "email": "danielwalker@example.com",
+    "price": 65,
+    "description": "Master JavaScript by learning ES6+ features and best practices.",
+    "image": "https://i.ibb.co.com/R5Sqgfs/Advanced-Java-Script-Tutorial-1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 11,
+    "title": "Blockchain for Beginners",
+    "name": "Mia Young",
+    "email": "miayoung@example.com",
+    "price": 110,
+    "description": "Explore blockchain technology, smart contracts, and cryptocurrencies.",
+    "image": "https://i.ibb.co.com/KxR4WjQ7/introduction-to-blockchain-a-beginners-guide-for-students.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 12,
+    "title": "C++ for Competitive Programming",
+    "name": "Ethan Harris",
+    "email": "ethanharris@example.com",
+    "price": 55,
+    "description": "Improve problem-solving skills with C++ for coding competitions.",
+    "image": "https://i.ibb.co.com/fdfbyJ8q/download.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 13,
+    "title": "Artificial Intelligence Basics",
+    "name": "Ava Robinson",
+    "email": "avarobinson@example.com",
+    "price": 130,
+    "description": "Get started with AI and deep learning concepts.",
+    "image": "https://i.ibb.co.com/RkjBjf9X/images.jpg",
+    "status": "pending"
+  },
+  {
+    "id": 14,
+    "title": "Game Development with Unity",
+    "name": "Liam White",
+    "email": "liamwhite@example.com",
+    "price": 100,
+    "description": "Create engaging games using Unity and C#.",
+    "image": "https://i.ibb.co.com/h1ws2TTK/4039334-8373-2.webp",
+    "status": "pending"
+  },
+  {
+    "id": 15,
+    "title": "DevOps and CI/CD Pipelines",
+    "name": "Charlotte King",
+    "email": "charlotteking@example.com",
+    "price": 95,
+    "description": "Learn DevOps practices and automate deployments with CI/CD.",
+    "image": "https://i.ibb.co.com/3ytKVQhC/images.jpg",
+    "status": "pending"
+  }
+]

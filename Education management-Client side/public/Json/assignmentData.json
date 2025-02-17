@@ -1,0 +1,50 @@
+[
+    {
+      "title": "Assignment 1",
+      "deadline": "2025-02-10",
+      "description": "Description for Assignment 1",
+      "course_id": "CSE101"
+    },
+    {
+      "title": "Assignment 2",
+      "deadline": "2025-02-15",
+      "description": "Description for Assignment 2",
+      "course_id": "CSE102"
+    },
+    {
+      "title": "Assignment 3",
+      "deadline": "2025-02-20",
+      "description": "Description for Assignment 3",
+      "course_id": "CSE103"
+    },
+    {
+      "title": "Assignment 4",
+      "deadline": "2025-02-25",
+      "description": "Description for Assignment 4",
+      "course_id": "CSE104"
+    },
+    {
+      "title": "Assignment 5",
+      "deadline": "2025-03-01",
+      "description": "Description for Assignment 5",
+      "course_id": "CSE105"
+    },
+    {
+      "title": "Assignment 6",
+      "deadline": "2025-03-05",
+      "description": "Description for Assignment 6",
+      "course_id": "CSE106"
+    },
+    {
+      "title": "Assignment 7",
+      "deadline": "2025-03-10",
+      "description": "Description for Assignment 7",
+      "course_id": "CSE107"
+    },
+    {
+      "title": "Assignment 8",
+      "deadline": "2025-03-15",
+      "description": "Description for Assignment 8",
+      "course_id": "CSE108"
+    }
+  ]

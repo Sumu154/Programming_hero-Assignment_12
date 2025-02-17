@@ -1,0 +1,72 @@
+[
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "password123",
+    "photoURL": "https://i.ibb.co.com/bRqp28mp/images.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "password": "securepass456",
+    "photoURL": "https://i.ibb.co.com/Xx35JrNQ/istockphoto-1317804578-612x612.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Alice Johnson",
+    "email": "alicejohnson@example.com",
+    "password": "alicePass789",
+    "photoURL": "https://i.ibb.co.com/JjNHnPVv/images.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Michael Brown",
+    "email": "michaelbrown@example.com",
+    "password": "michael123",
+    "photoURL": "https://example.com/michaelbrown.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emilydavis@example.com",
+    "password": "emilysecure",
+    "photoURL": "https://example.com/emilydavis.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Robert Wilson",
+    "email": "robertwilson@example.com",
+    "password": "robertpass567",
+    "photoURL": "https://example.com/robertwilson.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Sophia Martinez",
+    "email": "sophiamartinez@example.com",
+    "password": "sophiasecure987",
+    "photoURL": "https://example.com/sophiamartinez.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "David Clark",
+    "email": "davidclark@example.com",
+    "password": "davidpass999",
+    "photoURL": "https://example.com/davidclark.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Olivia Lewis",
+    "email": "olivialewis@example.com",
+    "password": "oliviapass321",
+    "photoURL": "https://example.com/olivialewis.jpg",
+    "status": "pending"
+  },
+  {
+    "name": "Daniel Walker",
+    "email": "danielwalker@example.com",
+    "password": "danielstrong111",
+    "photoURL": "https://example.com/danielwalker.jpg",
+    "status": "pending"
+  }
+]

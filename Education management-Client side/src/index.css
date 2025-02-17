@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Joti+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Joti+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Joti+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Sora:wght@100..800&display=swap');
+
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+@theme {
+  --breakpoint-xs: 460px;
+
+  --font-JotiOne: 'Joti One', 'serif';
+  --font-Montserrat: 'Montserrat', 'serif';
+  --font-OpenSans: 'Open Sans', 'serif';
+
+  --color-white: #FFFFFF;
+  --color-ash: #D9D9D9;
+  --color-darkgold: #BB8506;
+  --color-lightgold: #CD9003;
+  --color-darkyellow: #D99904;
+  --color-lightyellow: #EEFF25;
+  --color-darkblue: #111827;
+  --color-lightblue: #1F2937;
+  --color-darkblue: #111827;
+  --color-dark: #151515;
+
+  --color-purple: #433878;
+  --color-orchid: #AD49E1;
+  --color-green: #1EA30C;
+  --color-redd: #FF0000;
+  --color-orange: #F08B1D;
+  --color-jolpai: #9FA81A;
+  --color-brown: #D3A256;
+  --color-sky: #6AAEFF;
+  --color-rosepink: #FE4880;
+
+
+
+  
+}

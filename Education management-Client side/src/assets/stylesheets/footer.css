@@ -1,0 +1,18 @@
+#footer{
+  position: relative;
+  background: url('../images/bg-study.jpg') center/cover no-repeat;
+}
+
+#footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 2551, 255, 0.6); /* Adjust opacity here */
+  z-index: 0;
+}
+
+
+#footer * {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,31 @@
+.menu li > *:not(ul, .menu-title, details, .btn):active, 
+.menu li > *:not(ul, .menu-title, details, .btn).active, 
+.menu li > details > summary:active {
+  
+  color: white;
+  font-weight: 700;
+}
+
+
+/* dark mode */
+.dark .menu li > *:not(ul, .menu-title, details, .btn):active,
+.dark .menu li > *:not(ul, .menu-title, details, .btn).active,
+.dark .menu li > details > summary:active {
+  background-color: #333333;  /* Dark background */
+  color: #FFFFB7;  /* Light text for dark mode */
+  opacity: .9;
+}
+
+.menu li > *:not(ul, .menu-title, details, .btn){
+  color: white;
+}
+
+
+#navbar {
+ position:sticky; /* Ensures it stays above other elements */
+ top: 0;
+ z-index: 1000;
+}
+
+
+

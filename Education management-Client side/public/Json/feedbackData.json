@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Aisha Khan",
+    "email": "aishakhan@example.com",
+    "course": "Full-Stack Web Development",
+    "rating": 5,
+    "feedback": "This course was amazing! The hands-on projects helped me build real-world applications."
+  },
+  {
+    "name": "Rahul Sharma",
+    "email": "rahulsharma@example.com",
+    "course": "Data Science with Python",
+    "rating": 4,
+    "feedback": "Very informative course with great explanations. Would love to see more real-world datasets."
+  },
+  {
+    "name": "Sophia Lee",
+    "email": "sophialee@example.com",
+    "course": "UI/UX Design Fundamentals",
+    "rating": 5,
+    "feedback": "The design principles taught here transformed my approach to UI/UX. Highly recommended!"
+  },
+  {
+    "name": "Mohammed Faisal",
+    "email": "mohammedfaisal@example.com",
+    "course": "Cybersecurity Essentials",
+    "rating": 4,
+    "feedback": "Great course! The hands-on exercises were very helpful, but I wish there were more case studies."
+  },
+  {
+    "name": "Emily Carter",
+    "email": "emilycarter@example.com",
+    "course": "Machine Learning Basics",
+    "rating": 5,
+    "feedback": "The instructor explained complex concepts in a simple way. I feel confident in ML now!"
+  },
+  {
+    "name": "Daniel Brown",
+    "email": "danielbrown@example.com",
+    "course": "Digital Marketing Strategy",
+    "rating": 4,
+    "feedback": "Great insights into SEO and social media marketing. A bit more depth on PPC would be nice."
+  },
+  {
+    "name": "Fatima Noor",
+    "email": "fatimanoor@example.com",
+    "course": "Mobile App Development",
+    "rating": 5,
+    "feedback": "Loved the project-based learning approach! The React Native section was very helpful."
+  },
+  {
+    "name": "James Wilson",
+    "email": "jameswilson@example.com",
+    "course": "Ethical Hacking",
+    "rating": 4,
+    "feedback": "A good introduction to ethical hacking. Would appreciate more real-world penetration testing examples."
+  }
+]
