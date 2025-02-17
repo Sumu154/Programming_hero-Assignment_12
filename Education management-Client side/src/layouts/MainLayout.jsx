@@ -5,7 +5,7 @@ import Footer from '../components/footers/Footer';
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className='font-OpenSans'>
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
