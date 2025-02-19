@@ -36,6 +36,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className='bg-dark'>
+        <p className='text-white/90 text-center py-4'> Copyright © CulinaryCloud. All rights reserved. </p>
+      </div>
     </div>
   );
 };

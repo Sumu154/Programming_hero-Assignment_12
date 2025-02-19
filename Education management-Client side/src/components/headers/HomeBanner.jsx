@@ -17,7 +17,6 @@ import banner4 from '../../assets/images/study1.jpg'
 const HomeBanner = () => {
   const images = [banner1, banner2, banner3, banner4];
 
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [mainSwiper, setMainSwiper] = useState(null);
 
@@ -43,9 +42,9 @@ const HomeBanner = () => {
       </div>
       
       {/* Thumbnail Swiper */}
-      <div className="my-6 max-w-[420px] md:max-w-[600px] mx-auto grid grid-cols-4 gap-5  ">
+      <div className="my-6 max-w-[420px] md:max-w-[550px] mx-auto grid grid-cols-4 gap-5  ">
         {images.map((img, index) => (
-          <div key={index} className={`h-[50px] md:h-[65px] cursor-pointer ${activeIndex === index ? 'border-2 md:border-4  border-transparent outline-3 md:outline-4 outline-dark/90' : 'border-transparent'}`} onClick={() => mainSwiper && mainSwiper.slideTo(index)} >
+          <div key={index} className={`h-[50px] md:h-[60px] cursor-pointer ${activeIndex === index ? 'border-2 md:border-4  border-transparent outline-3 outline-dark/90' : 'border-transparent'}`} onClick={() => mainSwiper && mainSwiper.slideTo(index)} >
             <img src={img} alt="" className="w-full h-full object-cover" />
           </div>
         ))}

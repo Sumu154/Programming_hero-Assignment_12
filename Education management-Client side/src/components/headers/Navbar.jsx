@@ -57,8 +57,8 @@ const Navbar = () => {
           <div className='h-9 w-9'>  <img className='rounded-full' src={user.photoURL} alt="" /> </div> 
         </div> 
         :<div className='flex gap-4'>
-          <button className={`font-medium px-4 py-[6px] rounded-lg     ${path==='/auth/login' ? 'bg-orange text-white' : 'text-orange border-orange border-[1px]'} `}> <Link to='/auth/login'> Login </Link> </button> 
-          <button className={`font-medium px-4 py-[6px] rounded-lg     ${path==='/auth/register' ? 'bg-orange text-white' : 'text-orange border-orange border-[1px]' } `}> <Link to='/auth/register'> Register </Link> </button>
+          <button className={`text-sm  font-medium px-3 md:px-4 py-1 md:py-[6px] rounded-lg hover:bg-orange hover:text-white     ${path==='/auth/login' ? 'bg-orange text-white' : 'text-orange border-orange border-[1px]'} `}> <Link to='/auth/login'> Login </Link> </button> 
+          <button className={`text-sm font-medium px-3 md:px-4 py-1 md:py-[6px] rounded-lg hover:bg-orange hover:text-white    ${path==='/auth/register' ? 'bg-orange text-white' : 'text-orange border-orange border-[1px]' } `}> <Link to='/auth/register'> Register </Link> </button>
         </div>              
         } 
       </div>
