@@ -11,11 +11,12 @@ const LoginPage = () => {
         <title> auth | Login </title>
       </Helmet>
 
-      {/* <div className='w-[90%] bg-red-700 mx-auto flex justify-between items-center mt-24 '>
-        <LoginForm  ></LoginForm>
-        <Lottie className='w-[35%] ' animationData={loginLottie} loop={true} />
-      </div> */}
-      <LoginForm></LoginForm>
+      <div className='w-[80%] mx-auto flex flex-col-reverse md:flex-row justify-between items-center mt-24 '>
+        <div className='w-[95%] sm:w-[90%] md:w-[60%] '>
+        <LoginForm className=''></LoginForm>
+        </div>
+        <Lottie className='w-[60%] md:w-[35%]' animationData={loginLottie} loop={true} />
+      </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@
 
 
 @theme {
-  --breakpoint-xs: 460px;
+  --breakpoint-sm: 460px;
 
   --font-JotiOne: 'Joti One', 'serif';
   --font-Montserrat: 'Montserrat', 'serif';

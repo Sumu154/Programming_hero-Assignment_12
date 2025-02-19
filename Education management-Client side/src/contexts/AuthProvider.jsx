@@ -6,6 +6,7 @@ import { auth } from '../config/firebase.config'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import {  GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { LoadingContext } from './LoadingProvider';
+import Loading from '../components/shared/Loading';
 
 
 const googleProvider = new GoogleAuthProvider();
@@ -16,31 +17,57 @@ export const AuthContext = createContext();
 const AuthProvider = ( {children} ) => {
   const [ user, setUser ] = useState(null);
 
-  const { setLoading } = useContext(LoadingContext);
+  const { loading, setLoading } = useContext(LoadingContext);
 
   // firebase functions 
   const createNewUser = async (email, password) => {
     setLoading(true);
-    return await createUserWithEmailAndPassword(auth, email, password);
+    try{
+      return await createUserWithEmailAndPassword(auth, email, password);
+    }
+    finally{
+      setLoading(false);
+    }
   }
 
   const updateUserProfile = async (updatedData) => {
-    return await updateProfile(auth.currentUser, updatedData);
+    setLoading(true);
+    try{
+      return await updateProfile(auth.currentUser, updatedData);
+    }
+    finally{
+      setLoading(false);
+    }
   }
 
   const signOutUser = async () => {
     setLoading(true);
-    return await signOut(auth);
+    try{
+      return await signOut(auth);
+    }
+    finally{
+      setLoading(false);
+    }
   }
 
   const signInUser = async (email, password) => {
     setLoading(true);
-    return await signInWithEmailAndPassword(auth, email, password);
+    try{
+      return await signInWithEmailAndPassword(auth, email, password);
+    }
+    finally{
+      setLoading(false);
+    }
   }
 
   const signInWithGoogle = async () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider);
+    try{
+      return signInWithPopup(auth, googleProvider);
+    }
+    finally{
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -70,7 +97,7 @@ const AuthProvider = ( {children} ) => {
   return (
     <div>
       <AuthContext.Provider value={ authInfo }>
-        {children}
+        { loading ? <Loading></Loading> : children }
       </AuthContext.Provider>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+
 import { toast } from 'react-toastify';
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
@@ -14,21 +15,53 @@ const LoginForm = () => {
   const [inputEmail, setInputEmail] = useState('');
 
   const handleLoginSubmit = async (e) => {
+    e.preventDefault();
     
+    const form = new FormData(e.target);
+    const email = form.get('email');
+    const password = form.get('password');
+    console.log(email, password);
+
+
+    try{
+      const res = await signInUser(email, password);
+      const user = res.user;
+
+      // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
+      // console.log(res2.data);
+
+      setUser(user);
+      navigate('/');
+      toast.success('Successfully logged in!', {
+        position: "top-center",
+        autoClose: 1000,
+        theme: "dark",
+      });
+
+    }
+    catch(e){
+      const errorCode = e.code;
+      const errorMessage = e.message;
+      toast.error(`Invalid email or password !`, {
+        position: "top-center",
+        autoClose: 1000,
+        theme: "dark",
+      });
+    }
   };
 
   const handleGoogleSignIn = async () => {
-    try {
-      const res = await signInWithGoogle();
-      await axios.post(
-        'https://marathon-management-server-side.vercel.app/api/jwt/login', 
-        { email: res.user.email }, { withCredentials: true }
-      );
-      navigate('/');
-    } 
-    catch (e) {
-      toast.error('Google sign-in failed!', { position: "top-center", autoClose: 1000, theme: "dark" });
-    }
+    // try{
+    //   const res = await signInWithGoogle();
+
+    //   const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
+    //   console.log(res2.data);
+      
+    //   navigate('/')
+    // }
+    // catch(e){
+    //   // console.log('ERROR', e.message)
+    // }
   };
 
   const togglePasswordType = () => {
@@ -36,35 +69,36 @@ const LoginForm = () => {
   };
 
   return (
-    <div className='max-w-sm mx-auto bg-white mt-14 shadow-lg p-6 rounded-lg'>
+    <div className='max-w-[420px] mx-auto bg-orchid/15 my-14 shadow-lg p-6 rounded-lg'>
       <h3 className='text-center font-semibold text-2xl md:text-3xl'>Login Your Account</h3>
-      <p className='text-center mt-2 flex justify-center items-center gap-1'>
-        <FcGoogle className='text-xl' />
-        Continue with <button onClick={handleGoogleSignIn} className='text-blue-500 underline'>Google</button>
-      </p>
+      <p className='text-center mt-2 flex justify-center items-center gap-1'> <FcGoogle className='text-xl' /> Continue with <button onClick={handleGoogleSignIn} className='text-blue-500 underline'>Google</button> </p>
       
+      {/* form */}
       <form onSubmit={handleLoginSubmit} className="mt-4">
-        <fieldset className="form-control">
-          <label className="label"><span className="label-text">Email</span></label>
-          <input name='email' type="email" placeholder="Email" className="input input-primary w-full" value={inputEmail} required
+        <fieldset className="form-control mb-3">
+          <label className="label mb-1"><span className="label-text">Email</span></label>
+          <input name='email' type="email" placeholder="Email" className="input w-full" value={inputEmail} required
             onChange={(e) => setInputEmail(e.target.value)}  />
         </fieldset>
 
-        <fieldset className="form-control mt-2">
-          <label className="label"><span className="label-text">Password</span></label>
+        <fieldset className="form-control">
+          <label className="label mb-1"><span className="label-text">Password</span></label>
           <div className='relative'>
-            <input name='password' type={passwordType} placeholder="Password" className="input input-primary w-full pr-10" required />
+            <input name='password' type={passwordType} placeholder="Password" className="input w-full" required />
             <span onClick={togglePasswordType} className='absolute right-3 top-3 cursor-pointer'>
               {passwordType === 'password' ? <PiEyeClosed /> : <PiEye />}
             </span>
           </div>
           {/* forget password? */}
           <label className="label">
-            <Link to={'/auth/forgetpassword'} state={{ inputEmail }} className="link link-hover text-blue-500"> Forgot password? </Link>
+            <Link to={'/auth/forgetpassword'} state={{ inputEmail }} className="link link-hover text-sm text-blue-500"> Forgot password? </Link>
           </label>
         </fieldset>
 
-        <div className="form-control mt-4"> <button className="btn btn-primary w-full">Login</button> </div>
+        {/* login button */}
+        <div className="form-control mt-4"> 
+          <button className="btn bg-purple text-white w-full">Login</button>
+        </div>
 
         <p className='text-center text-sm mt-3'> Don’t Have An Account? <Link to='/auth/register' className='text-red-500 ml-1'>Register</Link> </p>
       </form>
