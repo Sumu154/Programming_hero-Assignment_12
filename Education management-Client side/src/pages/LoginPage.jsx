@@ -1,7 +1,7 @@
 import React from 'react';
 import loginLottie from '../assets/Animations/login.json'
 import {Helmet} from "react-helmet";
-import LoginForm from '../components/AuthComponents/LoginForm';
+import LoginForm from '../components/authComponents/LoginForm';
 import Lottie from 'lottie-react';
 
 const LoginPage = () => {

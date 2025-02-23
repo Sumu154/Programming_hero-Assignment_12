@@ -4,7 +4,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div id='footer' className="mt-20 text-sm md:text-base  ">
+    <div id='footer' className="text-sm md:text-base  ">
       <div className="text-dark py-8 max-w-[680px] mx-auto">
         <h2 className="font-JotiOne font-bold text-center text-base sm:text-2xl"> EduCair </h2>
         <p className="opacity-70 text-center mx-5"> Uniting runners and enthusiasts worldwide by providing seamless access to marathons and events. </p>

@@ -4,9 +4,12 @@
     "title": "Web Development Basics",
     "name": "John Doe",
     "email": "johndoe@example.com",
+    "instructor_name": "Fatima Noor",
+    "instructor_email": "fatima@gmail.com",
     "price": 50,
     "description": "An introductory course on web development covering HTML, CSS, and JavaScript.",
     "image": "https://i.ibb.co.com/CpC4X10P/blog-visuals-12.webp",
+    "enrollment": "1670",
     "status": "pending"
   },
   {

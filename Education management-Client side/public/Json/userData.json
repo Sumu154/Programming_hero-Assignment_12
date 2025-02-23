@@ -1,10 +1,10 @@
 [
   {
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "password": "password123",
+    "name": "Sumaiya Tasnim",
+    "email": "sumu@gmail.com",
     "photoURL": "https://i.ibb.co.com/bRqp28mp/images.jpg",
-    "status": "pending"
+    "status": "pending",
+    "role": "student"
   },
   {
     "name": "Jane Smith",

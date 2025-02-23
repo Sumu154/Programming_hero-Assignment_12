@@ -1,5 +1,5 @@
 import '../../assets/stylesheets/navbar.css'
-import logo from '../../assets/logos/educair.png'
+import logo from '../../assets/logos/educair.svg'
 
 import React, { useContext } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -38,7 +38,7 @@ const Navbar = () => {
 
   const links = <>
     <li> <NavLink to="/"> Home </NavLink> </li>
-    <li> <NavLink to="/allClasses"> Classes</NavLink> </li>
+    <li> <NavLink to="/classes"> Classes</NavLink> </li>
     <li> <NavLink to="/teachEducair"> Teach on Educair </NavLink> </li>
   </>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
               </ul>
             </div>
             <div className='flex gap-2 items-center'>
-              <img className='w-8 h-8 rounded-full' src={logo} alt="" />
+              <img className='w-7 h-7 rounded-full' src={logo} alt="" />
               <p className='font-JotiOne text-white text-xl lg:text-2xl'> EduCair </p>
             </div>
           </div>
@@ -74,8 +74,8 @@ const Navbar = () => {
                 <div tabIndex={0} role="button" className="w-9 h-9"> <img className='rounded-full' src={user.photoURL} alt="" />  </div>
                 <ul tabIndex={0} className="dropdown-content menu bg-dark/80 rounded-box z-1 w-44 p-2 shadow-sm">
                   <li><a> <span className='border-b-[1px] border-white/20 pb-1 '> {user.displayName} </span> </a></li>
-                  <li><a> <span className='text-base'> <LuLayoutDashboard /> </span> dashboard  </a></li>
-                  <li><a> <Link onClick={handleSignOut} to=''> <span className='flex items-center gap-2'> <span className='text-xl'> <IoMdLogOut /> </span> Logout </span> </Link>  </a></li>
+                  <li><a> <Link to='/dashboard'> <span className='flex items-center gap-2 hover:font-semibold'> <span className='text-xl'> <LuLayoutDashboard className='text-lg' /> </span> Dashboard </span> </Link>  </a></li>
+                  <li><a> <Link onClick={handleSignOut} to=''> <span className='flex items-center gap-2 hover:font-semibold'> <span className='text-xl'> <IoMdLogOut /> </span> Logout </span> </Link>  </a></li>
                 </ul>
               </div>
             </div> 

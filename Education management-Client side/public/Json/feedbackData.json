@@ -1,7 +1,7 @@
 [
   {
-    "name": "Aisha Khan",
     "email": "aishakhan@example.com",
+    "instructor_email": "fatima@gmail.com",
     "course": "Full-Stack Web Development",
     "rating": 5,
     "feedback": "This course was amazing! The hands-on projects helped me build real-world applications."

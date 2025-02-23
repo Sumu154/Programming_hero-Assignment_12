@@ -1,0 +1,24 @@
+.table-zebra {
+  & tbody {
+      & tr {
+          &:nth-child(even) {
+            background-color: rgba(173,73,225, .1);
+            
+          }
+      }
+  }
+}
+
+
+.table-zebra {
+  & tbody {
+      & tr {
+          &:nth-child(even) {
+            & {
+              
+            }
+            
+          }
+      }
+  }
+}
