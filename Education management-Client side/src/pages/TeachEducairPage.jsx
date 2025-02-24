@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 
 const TeachEducairPage = () => {
   return (
-    <div>
+    <div className='mb-8'>
       <Helmet>
         <title> Teach on Educair </title>
       </Helmet>

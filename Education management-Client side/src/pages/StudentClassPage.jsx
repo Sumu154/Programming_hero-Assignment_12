@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentClasses from '../components/StudentDashboard.jsx/StudentClasses';
+import StudentClasses from '../components/StudentDashboard/StudentClasses';
 import { Helmet } from 'react-helmet';
 
 const StudentClassPage = () => {

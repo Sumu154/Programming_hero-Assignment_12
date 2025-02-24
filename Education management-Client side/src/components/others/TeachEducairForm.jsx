@@ -15,7 +15,7 @@ const TeachEducairForm = () => {
         <div className='flex justify-center'> <h3 className='px-3 text-center  border-b-[2px] border-purple font-semibold mb-8 text-2xl md:text-3xl'> Apply to Teach </h3> </div>      
         {/* form */}
         <form onSubmit={handleApplySubmit} className="mt-4">
-          <div className='flex flex-wrap gap-2 mb-3'>
+          <div className='flex justify-between flex-wrap  mb-3'>
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text"> your name </span></label>
               <input name='email' type="email" placeholder="name" className="input w-full"   />
@@ -25,7 +25,7 @@ const TeachEducairForm = () => {
               <input name='email' type="email" placeholder="sumaiya@gmail.com" className="input w-full"   />
             </fieldset>
           </div>
-          <div className='flex flex-wrap gap-2 mb-3'>
+          <div className='flex justify-between flex-wrap mb-3'>
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text"> Your image</span></label>
               <input name='email' type="email" placeholder="image" className="input w-full"   />
@@ -35,7 +35,7 @@ const TeachEducairForm = () => {
               <input name='email' type="email" placeholder="title" className="input w-full"   />
             </fieldset>
           </div>  
-          <div className='flex flex-wrap gap-2 mb-3'>
+          <div className='flex justify-between flex-wrap mb-3'>
             {/* Choose Category */}
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text">Choose Category</span></label>
@@ -64,7 +64,7 @@ const TeachEducairForm = () => {
 
           {/* login button */}
           <div className="form-control mt-10 mb-4"> 
-            <button className="btn rounded-[2px] bg-orchid/95 hover:bg-orchid text-white w-full">Login</button>
+            <button className="btn rounded-[2px] bg-orchid/95 hover:bg-orchid text-white w-full"> Apply now </button>
           </div>
 
         </form>

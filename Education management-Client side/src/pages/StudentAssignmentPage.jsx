@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import FeedbackAndContinue from '../components/StudentDashboard.jsx/FeedbackAndContinue';
-import StudentAssignmentTable from '../components/StudentDashboard.jsx/StudentAssignmentTable';
+import FeedbackAndContinue from '../components/StudentDashboard/FeedbackAndContinue';
+import StudentAssignmentTable from '../components/StudentDashboard/StudentAssignmentTable';
 
 
 const StudentAssignmentPage = () => {

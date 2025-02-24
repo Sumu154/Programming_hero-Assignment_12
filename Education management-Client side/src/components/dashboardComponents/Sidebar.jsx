@@ -14,7 +14,7 @@ import 'react-modern-drawer/dist/index.css'
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const role = 'student';
+  const role = 'teacher';
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -35,8 +35,8 @@ const Sidebar = () => {
 
   const teacherLinks = <>
   <li> <NavLink to="/dashboard"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <CgProfile className='text-[22px]' /> <span> Profile </span> </div> </NavLink> </li>
-  <li> <NavLink to="/"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdLibraryAdd className='text-2xl' /> <span> Add class </span> </div> </NavLink> </li>
-  <li> <NavLink to="/"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdClass className='text-2xl' /><span> My classes </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/addClass"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdLibraryAdd className='text-2xl' /> <span> Add class </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/teacherClasses"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdClass className='text-2xl' /><span> My classes </span> </div> </NavLink> </li>
   </>
 
   return (
@@ -58,7 +58,12 @@ const Sidebar = () => {
       <div onClick={toggleDrawer} className='md:hidden text-purple  m-4 pl-4 mt-20 '> <PiSidebarDuotone className='text-3xl  ' /> </div>
       <Drawer style={{backgroundColor: '#433878', width: '176px'}} open={isOpen} onClose={toggleDrawer} direction="left">
         <div className="text-white min-h-screen p-4">
-          <ul className="list-none pt-28">{studentLinks}</ul>
+        <ul className='list-none pt-28 ml-4 lg:ml-8  '>
+        {role==='student' ? studentLinks 
+        :role==='teacher' ? teacherLinks
+        :adminLinks
+        }
+        </ul>
         </div>
       </Drawer>
       

@@ -10,15 +10,28 @@
 }
 
 
-.table-zebra {
-  & tbody {
-      & tr {
-          &:nth-child(even) {
-            & {
-              
-            }
-            
-          }
-      }
-  }
+.table-zebra tbody tr:nth-child(odd) td:last-child button {
+  background-color: #AD49E1; /* Change color for odd rows */
+  color: white;
+  
+}
+
+.table-zebra tbody tr:nth-child(even) td:last-child button {
+  background-color: white; /* Change color for odd rows */
+  color: #AD49E1;
+  border: #AD49E1 1px solid;
+}
+
+.table-zebra tbody tr:nth-child(odd) td:last-child button:hover {
+  background-color: #AD49E1; /* Change color for odd rows */
+  opacity: .90;
+  color: white;
+  
+}
+
+.table-zebra tbody tr:nth-child(even) td:last-child button:hover {
+  background-color: white; /* Change color for odd rows */
+  opacity: .90;
+  color: #AD49E1;
+  border: #AD49E1 1px solid;
 }

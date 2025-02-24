@@ -10,7 +10,7 @@ import Informations from '../components/homeComponents/Informations';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='mb-10'>
       <Helmet>
         <title> Home </title>
       </Helmet>

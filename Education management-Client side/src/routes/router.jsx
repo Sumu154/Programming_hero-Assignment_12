@@ -9,6 +9,9 @@ import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 
+//import components
+import Error from "../components/shared/Error";
+
 
 // import pages
 import HomePage from "../pages/HomePage";
@@ -18,11 +21,10 @@ import AllClassesPage from "../pages/AllClassesPage";
 import DetailsClassPage from "../pages/DetailsClassPage";
 import TeachEducairPage from "../pages/TeachEducairPage";
 import ProfilePage from "../pages/ProfilePage";
-
-//import components
-import Error from "../components/shared/Error";
 import StudentClassPage from "../pages/StudentClassPage";
 import StudentAssignmentPage from "../pages/StudentAssignmentPage";
+import TeacherAddClassPage from "../pages/TeacherAddClassPage";
+import TeacherClassPage from "../pages/TeacherClassPage";
 
 
 
@@ -78,6 +80,7 @@ const router = createBrowserRouter([
         path: "/dashboard", 
         element: <PrivateRoute> <ProfilePage></ProfilePage> </PrivateRoute>
       },
+      // student dashboard links
       {
         path: "/dashboard/studentClasses",
         element: <PrivateRoute> <StudentClassPage></StudentClassPage>  </PrivateRoute>
@@ -85,7 +88,21 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/studentAssignments",
         element: <PrivateRoute> <StudentAssignmentPage></StudentAssignmentPage> </PrivateRoute>
-      }
+      },
+      // teacher dashboard links
+      {
+        path: "/dashboard/addClass",
+        element: <PrivateRoute> <TeacherAddClassPage></TeacherAddClassPage>  </PrivateRoute>
+      },
+      {
+        path: "/dashboard/teacherClasses",
+        element: <PrivateRoute> <TeacherClassPage></TeacherClassPage>  </PrivateRoute>
+      },
+      {
+        path: "/dashboard/teacherClasses/:id",
+        element: <PrivateRoute> <TeacherClassPage></TeacherClassPage>  </PrivateRoute>
+      },
+      
     ]
   },
   {

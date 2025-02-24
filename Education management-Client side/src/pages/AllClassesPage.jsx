@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 
 const AllClassesPage = () => {
   return (
-    <div>
+    <div className='mb-16'>
       <Helmet>
         <title> All classes </title>
       </Helmet>

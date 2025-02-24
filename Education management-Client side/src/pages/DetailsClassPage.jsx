@@ -20,7 +20,7 @@ const DetailsClass = () => {
   const { title, name, email, instructor_email, price, description, enrollment, image } = classData;
 
   return (
-    <div>
+    <div className='mb-20'>
       <Helmet>
         <title> Class details </title>
       </Helmet>
