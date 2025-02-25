@@ -29,6 +29,7 @@ import TeacherClassDetailsPage from "../pages/TeacherClassDetailsPage";
 import AdminClassPage from "../pages/AdminClassPage";
 import AdminUsersPage from "../pages/AdminUsersPage";
 import AdminTeachersPage from "../pages/AdminTeachersPage";
+import TeacherClassUpdatePage from "../pages/TeacherClassUpdatePage";
 
 
 
@@ -105,6 +106,13 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/teacherClasses/:id",
         element: <PrivateRoute> <TeacherClassDetailsPage></TeacherClassDetailsPage>  </PrivateRoute>
+      },
+      {
+        path: "/dashboard/teacherUpdateClasses/:id",
+        element: <PrivateRoute> <TeacherClassUpdatePage></TeacherClassUpdatePage>  </PrivateRoute>,
+        loader: ({params}) => {
+          return params.id;
+        }
       },
       //Admin dashboard links
       {

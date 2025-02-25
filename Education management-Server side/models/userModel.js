@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   user_name: String,
   user_image: String,
   user_role: String,
-  user_enrollment: String,  //ekjon koyta course enroll korece
+  course_enrollment: Number,  //ekjon koyta course enroll korece
 })
 
 module.exports = mongoose.model('User', userSchema);

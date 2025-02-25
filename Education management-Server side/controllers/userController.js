@@ -38,4 +38,16 @@ const getUserById = async (req, res) => {
   }
 }
 
-module.exports = { createUser, getUsers, getUserById };
+const getUserByEmail = async (req, res) => {
+  try{
+    const user_email = req.query.user_email;
+    // console.log(id);
+    const user = await userModel.find( {user_email} );
+    res.status(200).json(user);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+module.exports = { createUser, getUsers, getUserById, getUserByEmail };

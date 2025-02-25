@@ -5,7 +5,6 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-toastify';
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
-import axios from 'axios';
 
 const LoginForm = () => {
   const { setUser, signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -18,25 +17,25 @@ const LoginForm = () => {
     e.preventDefault();
     
     const form = new FormData(e.target);
-    const email = form.get('email');
+    const user_email = form.get('email');
     const password = form.get('password');
-    console.log(email, password);
+    console.log(user_email, password);
 
 
     try{
-      const res = await signInUser(email, password);
+      const res = await signInUser(user_email, password);
       const user = res.user;
 
       // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
       // console.log(res2.data);
 
       setUser(user);
-      navigate('/');
       toast.success('Successfully logged in!', {
         position: "top-center",
         autoClose: 1000,
         theme: "dark",
       });
+      navigate('/');
 
     }
     catch(e){
@@ -51,17 +50,17 @@ const LoginForm = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    // try{
-    //   const res = await signInWithGoogle();
+     try{
+      const res = await signInWithGoogle();
 
-    //   const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
-    //   console.log(res2.data);
+      // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
+      // console.log(res2.data);
       
-    //   navigate('/')
-    // }
-    // catch(e){
-    //   // console.log('ERROR', e.message)
-    // }
+      navigate('/')
+    }
+    catch(e){
+      // console.log('ERROR', e.message)
+    }
   };
 
   const togglePasswordType = () => {

@@ -27,7 +27,7 @@
     "react-rating": "^2.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.1.4",
-    "react-toastify": "^11.0.3",
+    "react-toastify": "^11.0.5",
     "sweetalert2": "^11.17.2",
     "swiper": "^11.2.4",
     "tailwindcss": "^4.0.1"

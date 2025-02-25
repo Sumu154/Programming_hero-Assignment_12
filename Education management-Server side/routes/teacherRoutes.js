@@ -8,7 +8,7 @@ router.post('/teachers', createTeacher);
 // show all teachers -> get
 router.get('/teachers', getTeachers);
 // get teacher by id
-router.get('/teachers/:id', getTeacherById);
+router.get('/teachers/:teacher_id', getTeacherById);
 
 
 module.exports = router;

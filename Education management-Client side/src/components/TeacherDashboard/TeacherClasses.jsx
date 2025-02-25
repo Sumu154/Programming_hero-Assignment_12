@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import TeacherClassCard from '../allCards/TeacherClassCard';
+import { CourseContext } from '../../contexts/CourseProvider';
+import axiosInstance from '../../config/axiosInstance';
 
 const TeacherClasses = () => {
+  const { courses, setCourses } = useContext(CourseContext);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      console.log('all classes here');
+      const res = await axiosInstance.get('/courses');
+
+      setCourses(res.data);
+    }
+    fetchCourses();
+  }, [setCourses])
+
+
+
   return (
     <div>
       <div className='grid grid-cols-1 min-[640px]:grid-cols-2 lg:grid-cols-3 gap-4'>
-        <TeacherClassCard></TeacherClassCard>
-        <TeacherClassCard></TeacherClassCard>
-        <TeacherClassCard></TeacherClassCard>
-        <TeacherClassCard></TeacherClassCard>
-        <TeacherClassCard></TeacherClassCard>
+        { courses.map((it, index) => {
+          return <TeacherClassCard key={index} course={it}></TeacherClassCard>
+        })}
         
       </div>
     </div>

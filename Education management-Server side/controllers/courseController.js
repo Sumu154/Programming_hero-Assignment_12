@@ -27,9 +27,11 @@ const getCourses = async (req, res) => {
   }
 }
 
+
+// update a marathon by id
 const getCourseById = async (req, res) => {
   try{
-    const id = req.params.id;
+    const id = req.params.course_id;
     // console.log(id);
     const course = await courseModel.findOne( {_id: id} );
     res.status(200).json(course);
@@ -39,5 +41,44 @@ const getCourseById = async (req, res) => {
   }
 }
 
+// update a marathon by id
+const updateCourse = async (req, res) => {
+  try{
+    const id = req.params.course_id;
+    const updateFields = { ...req.body };
 
-module.exports = { createCourse, getCourses, getCourseById };
+     // Prevent user_enrollment and course_status from being updated
+     delete updateFields.user_enrollment;
+     delete updateFields.course_status;
+
+     console.log(updateFields);
+
+    const updatedCourse = await courseModel.findOneAndUpdate(
+      { _id:id },
+      { $set: updateFields },  // Only update provided fields
+      { new: true },
+    )
+    console.log(updatedCourse);
+    res.status(200).json(updatedCourse);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+// delete a marathon by id
+const deleteCourse = async (req, res) => {
+  try{
+    const id = req.params.course_id;
+    // console.log(id);
+
+    const deletedCourse = await courseModel.findByIdAndDelete(id);
+    res.status(200).json(deletedCourse);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal Server Error', error: e.message });
+  }
+}
+
+
+module.exports = { createCourse, getCourses, getCourseById, updateCourse, deleteCourse };

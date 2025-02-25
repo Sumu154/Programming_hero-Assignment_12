@@ -10,13 +10,14 @@ import { ToastContainer } from 'react-toastify'
 import router from './routes/router.jsx';
 import LoadingProvider from './contexts/LoadingProvider.jsx';
 import AuthProvider from './contexts/AuthProvider.jsx';
+import CourseProvider from './contexts/CourseProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <LoadingProvider>  <AuthProvider>
+    <LoadingProvider>  <AuthProvider> <CourseProvider>
       <RouterProvider router={router} />
       <ToastContainer />
-    </AuthProvider>  </LoadingProvider>
+      </CourseProvider> </AuthProvider>  </LoadingProvider>
   </StrictMode>,
 )

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axiosInstance from "../../config/axiosInstance";
 
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
-import axios from 'axios';
 
 
 // utils import
@@ -27,14 +27,17 @@ const RegisterForm = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
+   
+
     // get the form data
     const form = new FormData(e.target);   
     const user_name = form.get('name');
     const user_email = form.get('email');
     const user_image = form.get('photo');
     const password = form.get('password');
-    // console.log(name, email, password);
-    const user = {user_name, user_email, user_image, password};
+    const user_role = 'student';
+    const course_enrollment = 0;
+    const user = {user_name, user_email, user_image, password, user_role, course_enrollment};
     console.log(user);
 
 
@@ -47,8 +50,8 @@ const RegisterForm = () => {
 
     // register kore fellam -> firebase
     try{
-      const res = await createNewUser(user_email, password);
-      console.log(res.user);
+      const res1 = await createNewUser(user_email, password);
+      console.log(res1.user);
 
       // // token create korlam
       // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
@@ -60,12 +63,17 @@ const RegisterForm = () => {
         photoURL: user_image,
       })
       // console.log(res.user);
-      navigate('/');
       toast.success('Successfully registered user!', {
         position: "top-center",
         autoClose: 1000,
         theme: "dark",
       });
+
+      navigate('/');
+
+      // database e add korbo ekhn
+      const res2 = await axiosInstance.post("/users", user);
+      console.log(res2.data);
     }
     catch(e){
       const errorCode = e.code;
@@ -77,14 +85,6 @@ const RegisterForm = () => {
         theme: "dark",
       });
     }
-
-    // database e add korbo ekhn
-    const res = await axios.post('https://marathon-management-server-side.vercel.app/api/users', user, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    console.log(res.data);
   }
 
 
@@ -94,7 +94,7 @@ const RegisterForm = () => {
       navigate('/')
     }
     catch(e){
-      // console.log('ERROR', e.message)
+      console.log('ERROR', e.message)
     }
 
   }

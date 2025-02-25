@@ -8,7 +8,7 @@ router.post('/feedbacks', createFeedback);
 // show all feedbacks -> get
 router.get('/feedbacks', getFeedbacks);
 // get teacher by id
-router.get('/feedbacks/:id', getFeedbackById);
+router.get('/feedbacks/:feedback_id', getFeedbackById);
 
 
 module.exports = router;
