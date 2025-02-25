@@ -35,3 +35,9 @@
   color: #AD49E1;
   border: #AD49E1 1px solid;
 }
+
+.table-zebra tbody tr td:last-child button:disabled {
+  background-color: var(--color-ash) !important;
+  cursor: not-allowed;
+  border: none !important;
+}

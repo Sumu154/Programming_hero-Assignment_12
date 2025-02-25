@@ -6,6 +6,8 @@ import { MdOutlineAssignment } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
 import { FaAngleRight, FaBars } from "react-icons/fa";
 import { PiSidebarDuotone } from "react-icons/pi";
+import { MdRequestPage } from "react-icons/md";
+import { HiUsers } from "react-icons/hi2";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 
@@ -22,21 +24,22 @@ const Sidebar = () => {
 
 
   const studentLinks = <>
-    <li> <NavLink to="/dashboard"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <CgProfile  className='text-[22px]' /> <span> Profile </span> </div> </NavLink> </li>
-    <li> <NavLink to="/dashboard/studentClasses"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdClass  className='text-2xl' /> <span> Classes </span> </div> </NavLink> </li>
-    <li> <NavLink to="/dashboard/studentAssignments"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdOutlineAssignment className='text-2xl'  /> <span> Assignments </span> </div> </NavLink> </li>
+    <li> <NavLink to="/dashboard"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <CgProfile  className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
+    <li> <NavLink to="/dashboard/studentClasses"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass  className='text-xl' /> <span> Classes </span> </div> </NavLink> </li>
+    <li> <NavLink to="/dashboard/studentAssignments"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdOutlineAssignment className='text-xl'  /> <span> Assignments </span> </div> </NavLink> </li>
   </>
 
   const adminLinks = <>
-  <li> <NavLink to="/"> <div className='flex gap-3 items-center text-xl mb-2'> <CgProfile /> <span> Profile </span> </div> </NavLink> </li>
-  <li> <NavLink to="/"> <div className='flex gap-3 items-center text-xl mb-2'> <MdClass /> <span> Classes </span> </div> </NavLink> </li>
-  <li> <NavLink to="/"> <div className='flex gap-3 items-center text-xl mb-2'> <MdOutlineAssignment /> <span> Assignments </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard"> <div className='flex gap-2 items-center text-[17px] mb-2'> <CgProfile className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/adminUsers"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <HiUsers className='text-xl'/> <span> All Users </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/adminClasses"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass  className='text-xl'/> <span> All classes </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/adminTeachers"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdRequestPage className='text-xl' /> <span> Teacher request </span> </div> </NavLink> </li>
   </>
 
   const teacherLinks = <>
-  <li> <NavLink to="/dashboard"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <CgProfile className='text-[22px]' /> <span> Profile </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/addClass"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdLibraryAdd className='text-2xl' /> <span> Add class </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/teacherClasses"> <div className='flex gap-3 items-center text-base lg:text-lg mb-2 hover:font-semibold'> <MdClass className='text-2xl' /><span> My classes </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <CgProfile className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/addClass"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdLibraryAdd className='text-xl' /> <span> Add class </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/teacherClasses"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass className='text-xl' /><span> My classes </span> </div> </NavLink> </li>
   </>
 
   return (

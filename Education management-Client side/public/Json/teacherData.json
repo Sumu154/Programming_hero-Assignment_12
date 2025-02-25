@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Ayesha Karim",
+    "email": "ayesha.karim@gmail.com",
+    "image": "https://i.ibb.co.com/XYZ123/teacher1.jpg",
+    "experience": "5 years",
+    "title": "Senior Web Developer",
+    "category": "Web Development"
+  },
+  {
+    "name": "Rahim Ahmed",
+    "email": "rahim.ahmed@gmail.com",
+    "image": "https://i.ibb.co.com/qkVZJrM/teacher2.jpg",
+    "experience": "8 years",
+    "title": "Data Science Instructor",
+    "category": "Data Science"
+  },
+  {
+    "name": "Fatima Noor",
+    "email": "fatima.noor@gmail.com",
+    "image": "https://i.ibb.co.com/ABC456/teacher3.jpg",
+    "experience": "3 years",
+    "title": "Graphic Design Mentor",
+    "category": "Graphic Design"
+  },
+  {
+    "name": "Tariq Islam",
+    "email": "tariq.islam@gmail.com",
+    "image": "https://i.ibb.co.com/DEF789/teacher4.jpg",
+    "experience": "6 years",
+    "title": "Software Engineering Lecturer",
+    "category": "Software Engineering"
+  }
+]

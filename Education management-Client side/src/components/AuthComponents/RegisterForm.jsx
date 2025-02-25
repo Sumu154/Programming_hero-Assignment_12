@@ -29,12 +29,12 @@ const RegisterForm = () => {
 
     // get the form data
     const form = new FormData(e.target);   
-    const name = form.get('name');
-    const email = form.get('email');
-    const photo = form.get('photo');
+    const user_name = form.get('name');
+    const user_email = form.get('email');
+    const user_image = form.get('photo');
     const password = form.get('password');
     // console.log(name, email, password);
-    const user = {name, email, photo, password};
+    const user = {user_name, user_email, user_image, password};
     console.log(user);
 
 
@@ -47,7 +47,7 @@ const RegisterForm = () => {
 
     // register kore fellam -> firebase
     try{
-      const res = await createNewUser(email, password);
+      const res = await createNewUser(user_email, password);
       console.log(res.user);
 
       // // token create korlam
@@ -56,8 +56,8 @@ const RegisterForm = () => {
 
       // update kore dibo
       await updateUserProfile({
-        displayName: name,
-        photoURL: photo,
+        displayName: user_name,
+        photoURL: user_image,
       })
       // console.log(res.user);
       navigate('/');
@@ -79,12 +79,12 @@ const RegisterForm = () => {
     }
 
     // database e add korbo ekhn
-    // const res = await axios.post('https://marathon-management-server-side.vercel.app/api/users', user, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // })
-    // console.log(res.data);
+    const res = await axios.post('https://marathon-management-server-side.vercel.app/api/users', user, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    console.log(res.data);
   }
 
 

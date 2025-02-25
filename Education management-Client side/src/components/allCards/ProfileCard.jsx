@@ -10,7 +10,6 @@ const ProfileCard = () => {
     name: "Sumaiya Tasnim",
     email: "sumu@gmail.com",
     photoURL: "https://i.ibb.co/bRqp28mp/images.jpg",
-    status: "pending",
     phone: '015338787098',
     role: "student"
   };

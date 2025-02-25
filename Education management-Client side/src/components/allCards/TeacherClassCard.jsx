@@ -15,12 +15,12 @@ const TeacherClassCard = () => {
   const instructor_email = 'fatima@gmail.com';
   const enrollment = 1657;
   const price = 200;
-  const status = 'Approved'
+  const status = 'approved'
   const id = 1;
 
-  const statusClass = status === 'Approved' ? 'bg-green/20 text-green border-green' :
-                      status === 'Pending' ? 'bg-orange/20 text-orange border-orange' :
-                      status === 'Rejected' ? 'bg-redd/20 text-redd border-redd' : '';
+  const statusClass = status === 'approved' ? 'bg-green/20 text-green border-green' :
+                      status === 'pending' ? 'bg-orange/20 text-orange border-orange' :
+                      status === 'rejected' ? 'bg-redd/20 text-redd border-redd' : '';
 
   return (
     <div className='border-dark/15 border-[1px] hover:border-purple  dark:bg-cardbackground '>
@@ -41,7 +41,7 @@ const TeacherClassCard = () => {
         
       </div>
       {/* buttons */}
-      <div className='px-3 mt-8 mb-3 '> <Link to={`/classes/${id}`}> 
+      <div className='px-3 mt-8 mb-3 '> <Link to={`/dashboard/teacherClasses/${id}`}> 
         <button className={`rounded-lg w-full  py-[6px]  text-white  
           ${status==='Pending' || status==='Rejected' ? 'bg-ash cursor-not-allowed' : 'bg-orchid/95  hover:bg-orchid'}`} 
           disabled={status === 'Pending' || status === 'Rejected'}> See details 
