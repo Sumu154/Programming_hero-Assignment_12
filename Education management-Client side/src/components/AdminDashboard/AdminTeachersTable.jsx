@@ -1,43 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../../assets/stylesheets/table.css'
 import image from '../../assets/images/profile.jfif'
+import { getTeacherByStatus } from '../../apis/teacherApi';
 
 const AdminTeachersTable = () => {
-  const teachers = [
-    {
-      name: "Ayesha Karim",
-      email: "ayesha.karim@gmail.com",
-      image: "https://i.ibb.co.com/XYZ123/teacher1.jpg",
-      experience: "5",
-      title: "Senior Web Developer",
-      category: "Web Development"
-    },
-    {
-      name: "Rahim Ahmed",
-      email: "rahim.ahmed@gmail.com",
-      image: "https://i.ibb.co.com/qkVZJrM/teacher2.jpg",
-      experience: "8",
-      title: "Data Science Instructor",
-      category: "Data Science"
-    },
-    {
-      name: "Fatima Noor",
-      email: "fatima.noor@gmail.com",
-      image: "https://i.ibb.co.com/ABC456/teacher3.jpg",
-      experience: "3",
-      title: "Graphic Design Mentor",
-      category: "Graphic Design"
-    },
-    {
-      name: "Tariq Islam",
-      email: "tariq.islam@gmail.com",
-      image: "https://i.ibb.co.com/DEF789/teacher4.jpg",
-      experience: "6",
-      title: "Software Engineering Lecturer",
-      category: "Software Engineering"
-    }
-  ];
+
+  const [ teachers, setTeachers ] = useState([]);
+
+  const fetchTeachers = async () => {
+    const data = await getTeacherByStatus('pending');
+    setTeachers(data);
+  }
+  console.log(teachers);
+
+  useEffect(() => {
+    fetchTeachers();
+  }, [])
+
+
+  const handleChangeTeacherStatus = async (teacher_id, input_status) => {
+
+  }
+
+
+
   
   
   
@@ -61,19 +48,19 @@ const AdminTeachersTable = () => {
         <tbody>
           {/* row 1 */}
           { teachers.map((it, index) => { 
-            const { name, email, experience, title, category } = it;
+            const { _id:teacher_id, teacher_email, teacher_name, teacher_image, teacher_title, teacher_category, teacher_experience, teacher_status } = it;
 
             return (
               <tr key={index}>
                 <th> {index+1} </th>
-                <td> <img className='h-10 w-10 rounded-full' src={image} alt="" /> </td>
-                <td> {name} </td>
-                <td> {title} </td>
-                <td> {category} </td>
-                <td> {experience} </td>
+                <td> <img className='h-10 w-10 rounded-full' src={teacher_image} alt="" /> </td>
+                <td> {teacher_name} </td>
+                <td> {teacher_title} </td>
+                <td> {teacher_category} </td>
+                <td> {teacher_experience} </td>
                 <td> <span className='bg-orange/20 text-orange font-semibold px-3 py-[2px] border-[1.5px] rounded-full  '> pending </span> </td>
-                <td> <button className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-green text-white `} > Approve </button> </td>
-                <td> <button className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-redd! text-white! `} > Reject </button> </td>
+                <td> <button  onClick={()=>handleChangeTeacherStatus(teacher_id, 'approved')} className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-green text-white `} > Approve </button> </td>
+                <td> <button  onClick={()=>handleChangeTeacherStatus(teacher_id, 'rejected')} className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-redd! text-white! `} > Reject </button> </td>
               </tr>
             )
           })}

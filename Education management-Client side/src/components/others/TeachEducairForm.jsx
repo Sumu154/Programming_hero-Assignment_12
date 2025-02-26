@@ -1,11 +1,35 @@
 import React from 'react';
 import onlineTeach from '../../assets/Animations/online-teaching.json'
 import Lottie from 'lottie-react';
+import { createTeacher } from '../../apis/teacherApi';
+import Swal from 'sweetalert2';
 
 {/* */}
 const TeachEducairForm = () => {
 
-  const handleApplySubmit = () => {
+  const handleApplySubmit = async (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.target);   
+    const teacher_email = form.get('teacher_email');
+    const teacher_name = form.get('teacher_name');
+    const teacher_image = form.get('teacher_image');
+    const teacher_title = form.get('teacher_title');
+    const teacher_category = form.get('teacher_category');
+    const teacher_experience = form.get('teacher_experience');
+    const teacher_status = 'pending';
+    const teacher = { teacher_email, teacher_name, teacher_image, teacher_title, teacher_category, teacher_experience, teacher_status };
+    console.log(teacher);
+
+    const data = await createTeacher(teacher);
+    console.log(data);
+    Swal.fire({
+      title: "Your request is sent",
+      icon: "success",
+      customClass: {
+        popup: 'small-modal'
+      }
+    })
 
   }
 
@@ -18,28 +42,28 @@ const TeachEducairForm = () => {
           <div className='flex justify-between flex-wrap  mb-3'>
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text"> your name </span></label>
-              <input name='email' type="email" placeholder="name" className="input w-full"   />
+              <input name='teacher_name' type="text" placeholder="name" className="input w-full"   />
             </fieldset>
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text"> Your email </span></label>
-              <input name='email' type="email" placeholder="sumaiya@gmail.com" className="input w-full"   />
+              <input name='teacher_email' type="email" placeholder="sumaiya@gmail.com" className="input w-full"   />
             </fieldset>
           </div>
           <div className='flex justify-between flex-wrap mb-3'>
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text"> Your image</span></label>
-              <input name='email' type="email" placeholder="image" className="input w-full"   />
+              <input name='teacher_image' type="text" placeholder="image" className="input w-full"   />
             </fieldset>
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text"> Title </span></label>
-              <input name='email' type="email" placeholder="title" className="input w-full"   />
+              <input name='teacher_title' type="text" placeholder="title" className="input w-full"   />
             </fieldset>
           </div>  
           <div className='flex justify-between flex-wrap mb-3'>
             {/* Choose Category */}
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text">Choose Category</span></label>
-              <select name='category' className="select w-full">
+              <select name='teacher_category' className="select w-full">
                 <option value="" disabled selected> Select Category </option>
                 <option value="web"> Web Development </option>
                 <option value="data"> Data Science </option>
@@ -50,7 +74,7 @@ const TeachEducairForm = () => {
             {/* Choose Experience */}
             <fieldset className="form-control w-full md:w-[48%]">
               <label className="label mb-1"><span className="label-text">Choose Experience</span></label>
-              <select name='experience' className="select w-full">
+              <select name='teacher_experience' className="select w-full">
                 <option value="" disabled selected> Select Experience Level </option>
                 <option value="beginner"> Beginner </option>
                 <option value="mid"> Mid-Level </option>

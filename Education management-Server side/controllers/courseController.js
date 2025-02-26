@@ -71,12 +71,11 @@ const updateCourse = async (req, res) => {
 const updateCourseStatus = async (req, res) => {
   try{
     const course_id = req.params.course_id;
-    const input_status = req.body.course_status;
-    
-    const course = await courseModel.findOne({ _id:course_id })
-    console.log(course, input_status);
+    const course_status = req.body.course_status;
 
-    course.course_status = input_status;
+    const course = await courseModel.findOne({ _id:course_id })
+    
+    course.course_status = course_status;
     await course.save();
     res.status(200).json(course);
   }

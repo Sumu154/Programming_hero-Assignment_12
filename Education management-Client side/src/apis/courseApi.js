@@ -31,6 +31,7 @@ export const updateCourse = async (course_id, course) => {
 }
 
 export const updateCourseStatus = async (course_id, course_status) => {
+  console.log('in api', course_id, course_status);
   const res = await axiosInstance.patch(`/courses/${course_id}/status`, {course_status})
   return res.data;
 }

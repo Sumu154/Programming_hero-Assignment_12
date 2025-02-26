@@ -28,8 +28,6 @@ const RegisterForm = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
-   
-
     // get the form data
     const form = new FormData(e.target);   
     const user_name = form.get('name');
@@ -41,13 +39,11 @@ const RegisterForm = () => {
     const user = {user_name, user_email, user_image, password, user_role, course_enrollment};
     console.log(user);
 
-
     const passError = validPassword(password);
     if(passError){
       setError(passError);
       return;
     }
-
 
     // register kore fellam -> firebase
     try{

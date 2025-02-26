@@ -27,6 +27,21 @@ const getTeachers = async (req, res) => {
   }
 }
 
+// get teacher jader status pending
+const getTeacherByStatus = async (req, res) => {
+  // console.log('get all teachers');
+  try{
+    const { teacher_status } = req.params;
+    // console.log(teacher_status)
+    const teachers = await teacherModel.find({teacher_status});
+    res.status(200).json(teachers);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message })
+  }
+}
+
+
 const getTeacherById = async (req, res) => {
   try{
     const id = req.params.id;
@@ -40,4 +55,4 @@ const getTeacherById = async (req, res) => {
 }
 
 
-module.exports = { createTeacher, getTeachers, getTeacherById };
+module.exports = { createTeacher, getTeachers, getTeacherById, getTeacherByStatus };
