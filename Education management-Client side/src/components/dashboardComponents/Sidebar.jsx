@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import { MdClass } from "react-icons/md";
@@ -11,13 +11,24 @@ import { HiUsers } from "react-icons/hi2";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import { AuthContext } from '../../contexts/AuthProvider';
+import { getUserByEmail } from '../../apis/userApi';
 
 
 
-const Sidebar = () => {
+const Sidebar =  () => {
   const { user } = useContext(AuthContext);
-  const user_role = user.user_role;
-  console.log(user.user_email)
+  const user_email = user.email;
+  const [ user_role, setUser_role ] = useState(null)
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const data = await getUserByEmail(user_email);
+      console.log(data);
+
+      setUser_role(data.user_role);
+    }
+    fetchUser();
+  }, [])
 
   const [isOpen, setIsOpen] = useState(false);
 

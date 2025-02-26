@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import axiosInstance from '../../config/axiosInstance';
 import Swal from 'sweetalert2';
+import { updateCourse } from '../../apis/courseApi';
 
 const TeacherUpdateClassForm = ( {course_id} ) => {
   // console.log(course_id)
@@ -26,8 +27,8 @@ const TeacherUpdateClassForm = ( {course_id} ) => {
     console.log(course);
 
      // database e store korte hbe
-     const res = await axiosInstance.patch(`/courses/${course_id}`, course);
-     console.log(res.data);
+     const data = await updateCourse(course_id, course)
+     console.log(data);
 
      Swal.fire({
       title: "Class updated successfully!",

@@ -28,7 +28,7 @@ const getCourses = async (req, res) => {
 }
 
 
-// update a marathon by id
+// update a course by id
 const getCourseById = async (req, res) => {
   try{
     const id = req.params.course_id;
@@ -41,10 +41,10 @@ const getCourseById = async (req, res) => {
   }
 }
 
-// update a marathon by id
+// update a course by course_id -> but status and enrollment same thakbe -> patch
 const updateCourse = async (req, res) => {
   try{
-    const id = req.params.course_id;
+    const course_id = req.params.course_id;
     const updateFields = { ...req.body };
 
      // Prevent user_enrollment and course_status from being updated
@@ -54,7 +54,7 @@ const updateCourse = async (req, res) => {
      console.log(updateFields);
 
     const updatedCourse = await courseModel.findOneAndUpdate(
-      { _id:id },
+      { _id:course_id },
       { $set: updateFields },  // Only update provided fields
       { new: true },
     )
@@ -65,6 +65,26 @@ const updateCourse = async (req, res) => {
     res.status(500).json({ message: 'Internal server error: ', error:e.message });
   }
 }
+
+
+// update a course status only
+const updateCourseStatus = async (req, res) => {
+  try{
+    const course_id = req.params.course_id;
+    const input_status = req.body.course_status;
+    
+    const course = await courseModel.findOne({ _id:course_id })
+    console.log(course, input_status);
+
+    course.course_status = input_status;
+    await course.save();
+    res.status(200).json(course);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
 
 // delete a marathon by id
 const deleteCourse = async (req, res) => {
@@ -81,4 +101,4 @@ const deleteCourse = async (req, res) => {
 }
 
 
-module.exports = { createCourse, getCourses, getCourseById, updateCourse, deleteCourse };
+module.exports = { createCourse, getCourses, getCourseById, updateCourse, updateCourseStatus, deleteCourse };

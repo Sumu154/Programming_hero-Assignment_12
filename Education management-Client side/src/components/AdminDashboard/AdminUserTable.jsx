@@ -1,41 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUsers, updateUserRole } from '../../apis/userApi';
+import Swal from 'sweetalert2';
 
+import '../../assets/stylesheets/alert.css'
 import '../../assets/stylesheets/table.css'
-import image from '../../assets/images/profile.jfif'
+
 
 const AdminUserTable = () => {
 
-  const users = [
-    {
-      name: "Sumaiya Tasnim",
-      email: "sumu@gmail.com",
-      photoURL: "https://i.ibb.co.com/bRqp28mp/images.jpg",
-      status: "pending",
-      role: "student"
-    },
-    {
-      name: "Rahim Ahmed",
-      email: "rahim@gmail.com",
-      photoURL: "https://i.ibb.co.com/qkVZJrM/user1.jpg",
-      status: "approved",
-      role: "teacher"
-    },
-    {
-      name: "Ayesha Karim",
-      email: "ayesha@gmail.com",
-      photoURL: "https://i.ibb.co.com/XYZ123/user2.jpg",
-      status: "rejected",
-      role: "admin"
-    },
-    {
-      name: "Tariq Islam",
-      email: "tariq@gmail.com",
-      photoURL: "https://i.ibb.co.com/ABC456/user3.jpg",
-      status: "pending",
-      role: "moderator"
-    }
-  ];
+  const [ users, setUsers ] = useState([]);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const data = await getUsers();
+      setUsers(data); 
+    } 
+    fetchUsers();
+  }, [])
+
+
+  const handleMakeAdmin = async (user_email, user_name) => {
+    const data1 = await updateUserRole(user_email);
+    const data2 = await getUsers();
+    setUsers(data2);
+    // console.log(data1, data2);
+
+    Swal.fire({
+      title: `${user_name}  has been promoted to admin!`,
+      icon: "success",
+      customClass: {
+        popup: 'small-modal'
+      }
+    });
+  }
 
 
   return (
@@ -54,15 +51,15 @@ const AdminUserTable = () => {
         <tbody>
           {/* row 1 */}
           { users.map((it, index) => { 
-            const { name, email, role } = it;
+            const { user_name, user_email, user_image, user_role } = it;
 
             return (
               <tr key={index}>
                 <th> {index+1} </th>
-                <td> <img className='h-10 w-10 rounded-full' src={image} alt="" /> </td>
-                <td> {name} </td>
-                <td> {email} </td>
-                <td> <button className={`min-w-[112px] font-medium px-3 lg:px-4 py-1 rounded-sm  ${ role === 'admin' ? 'bg-ash cursor-not-allowed' : '' }`} disabled={it.role === "admin"} > Make admin </button> </td>
+                <td> <img className='h-10 w-10 rounded-full' src={user_image} alt="" /> </td>
+                <td> {user_name} </td>
+                <td> {user_email} </td>
+                <td> <button onClick={() => handleMakeAdmin(user_email, user_name)} className={`min-w-[112px] font-medium px-3 lg:px-4 py-1 rounded-sm  ${ user_role === 'admin' ? 'bg-ash cursor-not-allowed' : '' }`} disabled={it.user_role === "admin"} > Make admin </button> </td>
               </tr>
             )
           })}

@@ -8,6 +8,7 @@ import { MdDelete } from "react-icons/md";
 import Swal from 'sweetalert2';
 import axiosInstance from '../../config/axiosInstance';
 import { CourseContext } from '../../contexts/CourseProvider';
+import { deleteCourse } from '../../apis/courseApi';
 
 
 const TeacherClassCard = ( { course } ) => {
@@ -30,7 +31,7 @@ const TeacherClassCard = ( { course } ) => {
   
     if(alert.isConfirmed){
       // Add your delete logic here, if any
-      const res1 = await axiosInstance.delete(`/courses/${course_id}`);
+      const res1 = await deleteCourse(course_id);
 
       if(res1.status===200){
         console.log('its in');
@@ -44,7 +45,7 @@ const TeacherClassCard = ( { course } ) => {
       else{
         Swal.fire({
           title: "Error",
-          text: "Failed to delete the campaign.",
+          text: "Failed to delete the course.",
           icon: "error",
         });
       }

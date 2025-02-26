@@ -38,6 +38,8 @@
 
 .table-zebra tbody tr td:last-child button:disabled {
   background-color: var(--color-ash) !important;
+  color: black;
+  opacity: .5;
   cursor: not-allowed;
   border: none !important;
 }

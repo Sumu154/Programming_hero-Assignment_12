@@ -38,11 +38,12 @@ const getUserById = async (req, res) => {
   }
 }
 
+// get user by email
 const getUserByEmail = async (req, res) => {
   try{
-    const user_email = req.query.user_email;
-    // console.log(id);
-    const user = await userModel.find( {user_email} );
+    const user_email = req.params.user_email;
+    // console.log(user_email);
+    const user = await userModel.findOne( {user_email} );
     res.status(200).json(user);
   }
   catch(e){
@@ -50,4 +51,21 @@ const getUserByEmail = async (req, res) => {
   }
 }
 
-module.exports = { createUser, getUsers, getUserById, getUserByEmail };
+
+//change the user_role
+const updateUserRoleAdmin = async (req, res) => {
+  try{
+    const user_email = req.params.user_email;
+    const user = await userModel.findOne({ user_email });
+    console.log(user);
+
+    user.user_role = 'admin';
+    await user.save();
+    res.status(200).json(user);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+module.exports = { createUser, getUsers, getUserById, getUserByEmail, updateUserRoleAdmin };

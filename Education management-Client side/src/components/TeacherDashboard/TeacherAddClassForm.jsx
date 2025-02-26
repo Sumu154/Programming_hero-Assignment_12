@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import axiosInstance from '../../config/axiosInstance';
 import Swal from 'sweetalert2';
 import '../../assets/stylesheets/alert.css'
+import { createCourse } from '../../apis/courseApi';
 
 const TeacherAddClassForm = () => {
 
@@ -28,10 +29,10 @@ const TeacherAddClassForm = () => {
     console.log(course);
 
      // database e store korte hbe
-     const res = await axiosInstance.post('/courses', course);
+     const res = await createCourse(course)
      console.log(res.data);
 
-     Swal.fire({
+    Swal.fire({
       title: "Class added successfully!",
       icon: "success",
       customClass: {

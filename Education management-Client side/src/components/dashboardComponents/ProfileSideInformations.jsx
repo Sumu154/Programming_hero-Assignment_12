@@ -4,7 +4,7 @@ import { FaBookOpen } from "react-icons/fa6";
 
 
 const ProfileSideInformations = () => {
-  const year = 2;
+  const year = 0;
   const addedClass = 4;
   
   return (

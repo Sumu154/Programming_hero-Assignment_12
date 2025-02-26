@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import TeacherClassCard from '../allCards/TeacherClassCard';
 import { CourseContext } from '../../contexts/CourseProvider';
 import axiosInstance from '../../config/axiosInstance';
+import { getCourses } from '../../apis/courseApi';
 
 const TeacherClasses = () => {
   const { courses, setCourses } = useContext(CourseContext);
@@ -9,9 +10,8 @@ const TeacherClasses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       console.log('all classes here');
-      const res = await axiosInstance.get('/courses');
-
-      setCourses(res.data);
+      const data = await getCourses();
+      setCourses(data);
     }
     fetchCourses();
   }, [setCourses])

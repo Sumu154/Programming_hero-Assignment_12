@@ -1,0 +1,29 @@
+import axiosInstance from "../config/axiosInstance";
+
+
+// create user in database
+export const createUser = async (user) => {
+  const res = await axiosInstance.post("/users", user);
+  return res.data;
+}
+
+// get all the users
+export const getUsers = async () => {
+  const res = await axiosInstance.get('/users');
+  return res.data;
+}
+
+// get user object of specific email
+export const getUserByEmail = async (user_email) => {
+  const res = await axiosInstance.get(`/users/email/${user_email}`);
+  return res.data;
+}
+
+//make a specific email user admin -> patch update of user 
+export const updateUserRole = async (user_email) => {
+  const res = await axiosInstance.patch(`/users/email/${user_email}/user_role`)
+  return res.data;
+}
+
+
+

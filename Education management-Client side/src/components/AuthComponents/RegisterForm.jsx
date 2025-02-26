@@ -11,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 // utils import
 import { validPassword } from '../../Utils/Validators/passValidator'
 import { LoadingContext } from '../../contexts/LoadingProvider';
+import { createUser } from '../../apis/userApi';
 
 // https://i.ibb.co.com/23zmrZ5/5ad22761b9cf4196abba9a20dcc50c61.webp
 
@@ -72,8 +73,8 @@ const RegisterForm = () => {
       navigate('/');
 
       // database e add korbo ekhn
-      const res2 = await axiosInstance.post("/users", user);
-      console.log(res2.data);
+      const res2 = await createUser(user);
+      // console.log(res2.data);
     }
     catch(e){
       const errorCode = e.code;
