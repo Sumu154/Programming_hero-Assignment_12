@@ -92,7 +92,7 @@ const TeachEducairForm = () => {
         
           {/* login button */}
           <div className="form-control mt-10 mb-4"> 
-            <button className="btn rounded-[2px] bg-orchid/95 hover:bg-orchid text-white w-full"> Apply now </button>
+            <button className="btn rounded-[2px] bg-orchid/95 hover:bg-orchid text-white w-full"> Submit for review </button>
           </div>
 
         </form>

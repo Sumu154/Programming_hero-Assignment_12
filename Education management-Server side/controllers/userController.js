@@ -38,6 +38,18 @@ const getUserById = async (req, res) => {
   }
 }
 
+// get user role
+const getUserRole = async (req, res) => {
+  try{
+    const { user_email } = req.params;
+    const user = await userModel.findOne( {user_email} );
+    res.status(200).json(user.user_role);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
 // get user by email
 const getUserByEmail = async (req, res) => {
   try{
@@ -69,4 +81,4 @@ const updateUserRoleAdmin = async (req, res) => {
   }
 }
 
-module.exports = { createUser, getUsers, getUserById, getUserByEmail, updateUserRoleAdmin };
+module.exports = { createUser, getUsers, getUserById, getUserByEmail, getUserRole, updateUserRoleAdmin };

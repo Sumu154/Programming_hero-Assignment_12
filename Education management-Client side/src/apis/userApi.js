@@ -15,14 +15,19 @@ export const getUsers = async () => {
 
 // get user object of specific email
 export const getUserByEmail = async (user_email) => {
-  const res = await axiosInstance.get(`/users/email/${user_email}`);
+  const res = await axiosInstance.get(`/users/user_email/${user_email}`);
+  return res.data;
+}
+
+export const getUserRole = async (user_email) => {
+  const res = await axiosInstance.get(`/users/${user_email}/user_role`);
   return res.data;
 }
 
 //make a specific email user admin -> patch update of user 
 export const updateUserRole = async (user_email, user_role) => {
   console.log(user_role, user_email)
-  const res = await axiosInstance.patch(`/users/email/${user_email}/user_role`, {user_role})
+  const res = await axiosInstance.patch(`/users/${user_email}/user_role`, {user_role})
   return res.data;
 }
 

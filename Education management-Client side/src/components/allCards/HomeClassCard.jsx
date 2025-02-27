@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { HiMiniUsers } from "react-icons/hi2";
 import { BsCurrencyDollar } from "react-icons/bs";
 
-import image from '../../assets/images/web-dev.webp'
 
 
 const HomeClassCard = ( {course} ) => {

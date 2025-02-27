@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createUser, getUsers, getUserById, getUserByEmail, updateUserRoleAdmin } = require('../controllers/userController');
+const { createUser, getUsers, getUserById, getUserByEmail, updateUserRoleAdmin, getUserRole } = require('../controllers/userController');
 
 
 // create a marathon -> post
@@ -10,9 +10,11 @@ router.get('/users', getUsers);
 // get marathon by id
 router.get('/users/:user_id', getUserById);
 // get users by email
-router.get('/users/email/:user_email', getUserByEmail) //ekta specific email er info
+router.get('/users/user_email/:user_email', getUserByEmail) //ekta specific email er info
+// get user role
+router.get('/users/:user_email/user_role', getUserRole)
 // get users by email
-router.patch('/users/email/:user_email/user_role', updateUserRoleAdmin)
+router.patch('/users/:user_email/user_role', updateUserRoleAdmin)
 
 
 module.exports = router;
