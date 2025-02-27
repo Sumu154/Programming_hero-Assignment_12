@@ -25,6 +25,12 @@ export const getCourseById = async (course_id) => {
   return res.data;
 }
 
+export const getCourseByStatus = async (course_status) => {
+  console.log(course_status)
+  const res = await axiosInstance.get(`/courses/course_status/${course_status}`)
+  return res.data;
+}
+
 export const updateCourse = async (course_id, course) => {
   const res = await axiosInstance.patch(`/courses/${course_id}`, course);
   return res.data;

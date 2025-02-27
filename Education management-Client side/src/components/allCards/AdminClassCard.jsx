@@ -10,7 +10,7 @@ const AdminClassCard = ( {course, onStatusUpdate} ) => {
   
   const { _id:course_id, course_title, course_image, teacher_name, teacher_email, course_description, course_price, course_status, user_enrollment } = course;
 
-  const handleChangeCourse = async (input_status) => {
+  const handleUpdateCourseStatus = async (input_status) => {
     // console.log(course_id, input_status);
     const data = await updateCourseStatus(course_id, input_status);
     // console.log(data);
@@ -58,8 +58,8 @@ const AdminClassCard = ( {course, onStatusUpdate} ) => {
         </button> </Link> 
       </div>
       <div className='px-3 w-full mb-3 flex justify-between '>
-        <Link className='w-[48%] ' > <button onClick={()=>handleChangeCourse('approved')} className='rounded-lg w-full bg-green  hover:bg-green/95 py-[4px]  text-white flex justify-center items-center gap-1 '> <span className='mb-[2px] '> Approve </span> <MdOutlineUpdate className='text-xl' /> </button> </Link>
-        <Link className='w-[48%] ' > <button onClick={()=>handleChangeCourse('rejected')} className='rounded-lg w-full bg-redd  hover:bg-redd/90 py-[4px] text-white flex justify-center items-center gap-1 '> <span className='mb-[2px] '> Reject </span> <MdDelete className='text-xl' /> </button> </Link>
+        <Link className='w-[48%] ' > <button onClick={()=>handleUpdateCourseStatus('approved')} className='rounded-lg w-full bg-green  hover:bg-green/95 py-[4px]  text-white flex justify-center items-center gap-1 '> <span className='mb-[2px] '> Approve </span> <MdOutlineUpdate className='text-xl' /> </button> </Link>
+        <Link className='w-[48%] ' > <button onClick={()=>handleUpdateCourseStatus('rejected')} className='rounded-lg w-full bg-redd  hover:bg-redd/90 py-[4px] text-white flex justify-center items-center gap-1 '> <span className='mb-[2px] '> Reject </span> <MdDelete className='text-xl' /> </button> </Link>
       </div>
     </div>
   );

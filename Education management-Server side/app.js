@@ -28,6 +28,7 @@ const teacherRoutes = require('./routes/teacherRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes')
 const courseRoutes = require('./routes/courseRoutes')
 const assignmentRoutes = require('./routes/assignmentRoutes')
+const enrollmentRoutes = require('./routes/enrollmentRoutes')
 
 app.get('/', (req, res) => {
   res.send('hello.....assignment 12 hbe ki?')
@@ -38,6 +39,7 @@ app.use('/api', teacherRoutes)
 app.use('/api', feedbackRoutes)
 app.use('/api', courseRoutes)
 app.use('/api', assignmentRoutes)
+app.use('/api', enrollmentRoutes)
 
 
 app.listen(port, () => {

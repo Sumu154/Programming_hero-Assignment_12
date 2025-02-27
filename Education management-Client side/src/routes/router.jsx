@@ -30,6 +30,8 @@ import AdminClassPage from "../pages/AdminClassPage";
 import AdminUsersPage from "../pages/AdminUsersPage";
 import AdminTeachersPage from "../pages/AdminTeachersPage";
 import TeacherClassUpdatePage from "../pages/TeacherClassUpdatePage";
+import axiosInstance from "../config/axiosInstance";
+import { getCourseById } from "../apis/courseApi";
 
 
 
@@ -50,11 +52,10 @@ const router = createBrowserRouter([
       {
         path: '/classes/:id',
         element: <PrivateRoute> <DetailsClassPage></DetailsClassPage> </PrivateRoute>,
-        // loader: async ( {params} ) => {
-        //   const res = await axios.get(`https://marathon-management-server-side.vercel.app/api/marathons/${params.id}`, {withCredentials: true});
-        //   const class =  res.data;
-        //   return class;
-        // }
+        loader: async ( {params} ) => {
+          const res = await getCourseById(params.id);
+          return res;
+        }
       },
       {
         path: '/teachEducair',

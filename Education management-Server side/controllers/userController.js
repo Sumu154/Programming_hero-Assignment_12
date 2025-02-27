@@ -56,10 +56,11 @@ const getUserByEmail = async (req, res) => {
 const updateUserRoleAdmin = async (req, res) => {
   try{
     const user_email = req.params.user_email;
+    const user_role = req.body.user_role;
     const user = await userModel.findOne({ user_email });
     console.log(user);
 
-    user.user_role = 'admin';
+    user.user_role = user_role;
     await user.save();
     res.status(200).json(user);
   }

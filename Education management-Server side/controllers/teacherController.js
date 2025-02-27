@@ -42,6 +42,19 @@ const getTeacherByStatus = async (req, res) => {
 }
 
 
+const getTeacherByEmail = async (req, res) => {
+  // console.log('get all teachers');
+  try{
+    const { teacher_email } = req.params;
+    const teacher = await teacherModel.find({teacher_email});
+    res.status(200).json(teacher);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message })
+  }
+}
+
+
 const getTeacherById = async (req, res) => {
   try{
     const id = req.params.id;
@@ -55,4 +68,23 @@ const getTeacherById = async (req, res) => {
 }
 
 
-module.exports = { createTeacher, getTeachers, getTeacherById, getTeacherByStatus };
+// update a teacher status only
+const updateTeacherStatus = async (req, res) => {
+  try{
+    const teacher_id = req.params.teacher_id;
+    const teacher_status = req.body.teacher_status;
+    console.log(teacher_id, teacher_status)
+
+    const teacher = await teacherModel.findOne({ _id:teacher_id })
+    
+    teacher.teacher_status = teacher_status;
+    await teacher.save();
+    res.status(200).json(teacher);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+
+module.exports = { createTeacher, getTeachers, getTeacherById, getTeacherByStatus, getTeacherByEmail, updateTeacherStatus };

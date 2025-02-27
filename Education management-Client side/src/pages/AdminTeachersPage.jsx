@@ -6,7 +6,7 @@ const AdminTeachersPage = () => {
   return (
     <div>
       <Helmet>
-        <title> Dashboard | My classes </title>
+        <title> Dashboard | Teacher requests </title>
       </Helmet>
 
       <div className=''>

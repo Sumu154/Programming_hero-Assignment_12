@@ -6,7 +6,7 @@ const AdminClassPage = () => {
   return (
     <div>
       <Helmet>
-        <title> Dashboard | My classes </title>
+        <title> Dashboard | All classes </title>
       </Helmet>
 
       <div className=''>

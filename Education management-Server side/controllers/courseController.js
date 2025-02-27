@@ -28,13 +28,26 @@ const getCourses = async (req, res) => {
 }
 
 
-// update a course by id
+// get a course by id
 const getCourseById = async (req, res) => {
   try{
     const id = req.params.course_id;
     // console.log(id);
     const course = await courseModel.findOne( {_id: id} );
     res.status(200).json(course);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+// get a course by status
+const getCourseByStatus = async (req, res) => {
+  try{
+    const course_status = req.params.course_status;
+
+    const courses = await courseModel.find({ course_status })
+    res.status(200).json(courses);
   }
   catch(e){
     res.status(500).json({ message: 'Internal server error: ', error:e.message });
@@ -100,4 +113,4 @@ const deleteCourse = async (req, res) => {
 }
 
 
-module.exports = { createCourse, getCourses, getCourseById, updateCourse, updateCourseStatus, deleteCourse };
+module.exports = { createCourse, getCourses, getCourseById, getCourseByStatus, updateCourse, updateCourseStatus, deleteCourse };

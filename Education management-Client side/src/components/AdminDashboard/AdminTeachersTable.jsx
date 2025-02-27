@@ -2,31 +2,55 @@ import React, { useEffect, useState } from 'react';
 
 import '../../assets/stylesheets/table.css'
 import image from '../../assets/images/profile.jfif'
-import { getTeacherByStatus } from '../../apis/teacherApi';
+import { getTeacherByStatus, getTeachers, updateTeacherStatus } from '../../apis/teacherApi';
+import Swal from 'sweetalert2';
+import { updateUserRole } from '../../apis/userApi';
 
 const AdminTeachersTable = () => {
 
   const [ teachers, setTeachers ] = useState([]);
 
   const fetchTeachers = async () => {
-    const data = await getTeacherByStatus('pending');
+    const data = await getTeachers();
     setTeachers(data);
   }
   console.log(teachers);
+
 
   useEffect(() => {
     fetchTeachers();
   }, [])
 
 
-  const handleChangeTeacherStatus = async (teacher_id, input_status) => {
+  const handleUpdateTeacherStatus = async (teacher_id, input_status, teacher_email, teacher_name) => {
+    console.log(teacher_id, input_status)
+    const data = await updateTeacherStatus(teacher_id, input_status);
+    fetchTeachers(data); //refetch
 
+    // teacher approved hole user_role->teacher hbbe,,student theke change hoye
+    if(input_status === 'approved'){
+      Swal.fire({
+        title: `${teacher_name}  has been promoted to admin!`,
+        icon: "success",
+        customClass: {
+          popup: 'small-modal'
+        }
+      })
+      const data = await updateUserRole(teacher_email, 'teacher');
+      console.log(data);  
+    }
+    else{
+      Swal.fire({
+        title: "this course is rejected",
+        text: "Failed to delete the course.",
+        icon: "error",
+        customClass: {
+          popup: 'small-modal'
+        }
+      });
+    }
   }
 
-
-
-  
-  
   
   return (
     <div className="overflow-y-hidden overflow-x-auto rounded-t-2xl ">
@@ -50,6 +74,15 @@ const AdminTeachersTable = () => {
           { teachers.map((it, index) => { 
             const { _id:teacher_id, teacher_email, teacher_name, teacher_image, teacher_title, teacher_category, teacher_experience, teacher_status } = it;
 
+            const statusClass = teacher_status === 'approved' ? 'bg-green/20 text-green border-green' :
+                                teacher_status === 'pending' ? 'bg-orange/20 text-orange border-orange' :
+                                teacher_status === 'rejected' ? 'bg-redd/20 text-redd border-redd' : '';
+
+          
+            const buttonClass = teacher_status === 'approved' ? 'bg-green/20 text-green border-green' :
+                                teacher_status === 'pending' ? 'bg-orange/20 text-orange border-orange' :
+                                teacher_status === 'rejected' ? 'bg-redd/20 text-redd border-redd' : '';
+
             return (
               <tr key={index}>
                 <th> {index+1} </th>
@@ -58,9 +91,9 @@ const AdminTeachersTable = () => {
                 <td> {teacher_title} </td>
                 <td> {teacher_category} </td>
                 <td> {teacher_experience} </td>
-                <td> <span className='bg-orange/20 text-orange font-semibold px-3 py-[2px] border-[1.5px] rounded-full  '> pending </span> </td>
-                <td> <button  onClick={()=>handleChangeTeacherStatus(teacher_id, 'approved')} className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-green text-white `} > Approve </button> </td>
-                <td> <button  onClick={()=>handleChangeTeacherStatus(teacher_id, 'rejected')} className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-redd! text-white! `} > Reject </button> </td>
+                <td> <span className={` font-semibold px-3 py-[2px] border-[1.5px] rounded-full ${statusClass} `}> {teacher_status} </span> </td>
+                <td> <button  onClick={()=>handleUpdateTeacherStatus(teacher_id, 'approved', teacher_email, teacher_name) } className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-green text-white `} > Approve </button> </td>
+                <td> <button  onClick={()=>handleUpdateTeacherStatus(teacher_id, 'rejected', teacher_email, teacher_name) } className={`min-w-[100px] font-medium px-3 lg:px-4 py-1 rounded-sm  bg-redd! text-white! `} > Reject </button> </td>
               </tr>
             )
           })}
