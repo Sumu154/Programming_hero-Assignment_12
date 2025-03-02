@@ -28,7 +28,7 @@ const DetailsClass = ( ) => {
       </Helmet>
 
       <DetailsBanner course_title={course_title}  course_description={course_description} ></DetailsBanner>
-      <DetailsClassSection teacher_name={teacher_name} teacher_email={teacher_email}  course_price={course_price} user_enrollment={user_enrollment} course_image={course_image} ></DetailsClassSection>
+      <DetailsClassSection course_id={course_id} teacher_name={teacher_name} teacher_email={teacher_email}  course_price={course_price} user_enrollment={user_enrollment} course_image={course_image} ></DetailsClassSection>
     </div>
   );
 };

@@ -18,7 +18,7 @@ const HomeClassCard = ( {course} ) => {
         <h3 className='text-dark/90 font-semibold text-xl mb-1 '> {course_title} </h3>
         <p className='text-dark/80 font-semibold mb-3'> {teacher_name} </p>
         <p className='text-dark/70 font-medium flex items-center gap-1 '> <span className='flex items-center gap-1 mr-1'> <HiMiniUsers /> <span> Total Enrollment: </span> </span> {user_enrollment} </p>
-        <p className='text-green font-bold flex items-center gap-1 '> <span className=''> <BsCurrencyDollar /> </span> {course_price} </p>
+        <p className='text-dollargreen font-bold flex items-center gap-1 '> <span className=''> <BsCurrencyDollar /> </span> {course_price} </p>
       </div>
       <div className='my-3 mb-5 flex justify-center'> <Link to={`/classes/${course_id}`}> <button className='bg-purple/95  hover:bg-purple px-6 py-[6px] rounded-full text-white '> Enroll </button> </Link> </div>
     </div>

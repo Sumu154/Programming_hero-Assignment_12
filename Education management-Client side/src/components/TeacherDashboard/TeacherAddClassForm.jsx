@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
-import axiosInstance from '../../config/axiosInstance';
 import Swal from 'sweetalert2';
 import '../../assets/stylesheets/alert.css'
 import { createCourse } from '../../apis/courseApi';
@@ -24,8 +23,9 @@ const TeacherAddClassForm = () => {
     const course_price = form.get('price');
     const course_status = 'pending';
     const user_enrollment = 0;
+    const course_assignment = 0;
 
-    const course = { course_title, course_image, teacher_name, teacher_email, course_description, course_price, course_status, user_enrollment };
+    const course = { course_title, course_image, teacher_name, teacher_email, course_description, course_price, course_status, user_enrollment, course_assignment };
     console.log(course);
 
      // database e store korte hbe

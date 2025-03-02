@@ -10,6 +10,7 @@ const courseSchema = new mongoose.Schema({
   course_price: Number,
   course_status: String,
   user_enrollment: Number, //ekta course kotojon enroll korece
+  course_assignment: Number,  // ekta course e kotogula assignment ace
 })
 
 module.exports = mongoose.model('Course', courseSchema);

@@ -4,7 +4,7 @@ import instructor_image from '../../assets/images/profile-teacher2.jpg'
 import DetailsCard from '../allCards/DetailsCard';
 import { getTeacherByEmail } from '../../apis/teacherApi';
 
-const DetailsClassSection = ( {teacher_name, teacher_email, course_price, user_enrollment, course_image} ) => {
+const DetailsClassSection = ( {course_id, teacher_name, teacher_email, course_price, user_enrollment, course_image} ) => {
   const [ teacher_image, setTeacher_image ] = useState('');
 
   const fetchTeacher = () => {
@@ -36,7 +36,7 @@ const DetailsClassSection = ( {teacher_name, teacher_email, course_price, user_e
 
       {/* right -> class card */}
       <div>
-        <DetailsCard course_price={course_price} user_enrollment={user_enrollment} course_image={course_image} ></DetailsCard>
+        <DetailsCard course_id={course_id} course_price={course_price} user_enrollment={user_enrollment} course_image={course_image} ></DetailsCard>
       </div>
     </div>
   );

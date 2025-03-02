@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import axios from "axios";
+import { getCourseById } from "../apis/courseApi";
 
 
 import PrivateRoute from "./PrivateRoutes";
@@ -30,8 +30,8 @@ import AdminClassPage from "../pages/AdminClassPage";
 import AdminUsersPage from "../pages/AdminUsersPage";
 import AdminTeachersPage from "../pages/AdminTeachersPage";
 import TeacherClassUpdatePage from "../pages/TeacherClassUpdatePage";
-import axiosInstance from "../config/axiosInstance";
-import { getCourseById } from "../apis/courseApi";
+import StudentClassDetailsPage from "../pages/StudentClassDetailsPage";
+import ClassPaymentPage from "../pages/ClassPaymentPage";
 
 
 
@@ -55,6 +55,13 @@ const router = createBrowserRouter([
         loader: async ( {params} ) => {
           const res = await getCourseById(params.id);
           return res;
+        }
+      },
+      {
+        path: "/classes/:id/payment",
+        element: <PrivateRoute> <ClassPaymentPage></ClassPaymentPage>  </PrivateRoute>,
+        loader: ({params}) => {
+          return params.id;
         }
       },
       {
@@ -90,6 +97,13 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/studentClasses",
         element: <PrivateRoute> <StudentClassPage></StudentClassPage>  </PrivateRoute>
+      },
+      {
+        path: "/dashboard/studentClasses/:id",
+        element: <PrivateRoute> <StudentClassDetailsPage></StudentClassDetailsPage>  </PrivateRoute>,
+        loader: ({params}) => {
+          return params.id;
+        }
       },
       {
         path: "/dashboard/studentAssignments",

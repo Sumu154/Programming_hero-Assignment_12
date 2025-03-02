@@ -28,7 +28,7 @@ const getCourses = async (req, res) => {
 }
 
 
-// get a course by id
+// get a course by course_id
 const getCourseById = async (req, res) => {
   try{
     const id = req.params.course_id;
@@ -41,6 +41,8 @@ const getCourseById = async (req, res) => {
   }
 }
 
+// get courses by user_email
+
 // get a course by status
 const getCourseByStatus = async (req, res) => {
   try{
@@ -52,6 +54,44 @@ const getCourseByStatus = async (req, res) => {
   catch(e){
     res.status(500).json({ message: 'Internal server error: ', error:e.message });
   }
+}
+
+// get popular courses -> jar user_enrollment beshi shegula fetch korte hbe
+// 1️⃣ Finds all courses
+// 2️⃣ Sorts them in descending order
+// 3️⃣ Returns only the top 3 results
+const getPopularCourses = async (req, res) => {
+  try{
+    const popularCourses = await courseModel.find().sort({ user_enrollment: -1 }).limit(4); 
+    res.status(200).json(popularCourses)            
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+// get course er ekta info -> user_enrollment chai
+const getUserEnrollment = async (req, res) => {
+  try{
+      const { course_id } = req.params;
+      const course = await courseModel.findOne( {_id:course_id} );
+      res.status(200).json(course.user_enrollment);
+    }
+    catch(e){
+      res.status(500).json({ message: 'Internal server error: ', error:e.message });
+    }
+}
+
+
+const getCourseAssignment = async (req, res) => {
+  try{
+      const { course_id } = req.params;
+      const course = await courseModel.findOne( {_id:course_id} );
+      res.status(200).json(course.course_assignment);
+    }
+    catch(e){
+      res.status(500).json({ message: 'Internal server error: ', error:e.message });
+    }
 }
 
 // update a course by course_id -> but status and enrollment same thakbe -> patch
@@ -97,6 +137,30 @@ const updateCourseStatus = async (req, res) => {
   }
 }
 
+// update course_assignment -> increment / decrement
+const updateCourseAssignment = async (req, res) => {
+  try{
+    const { course_id } = req.params;
+    const { change } = req.body;
+
+    const course = await courseModel.findOne({ _id:course_id });
+    
+    if(change==='increment'){
+      course.course_assignment += 1;
+    } 
+    else if(change==='decrement' && course.course_assignment>0) {
+      course.course_assignment -= 1;
+    }
+
+    await course.save();
+    res.status(200).json(course);
+
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
 
 // delete a marathon by id
 const deleteCourse = async (req, res) => {
@@ -113,4 +177,4 @@ const deleteCourse = async (req, res) => {
 }
 
 
-module.exports = { createCourse, getCourses, getCourseById, getCourseByStatus, updateCourse, updateCourseStatus, deleteCourse };
+module.exports = { createCourse, getCourses, getCourseById, getCourseByStatus, getPopularCourses, getUserEnrollment, getCourseAssignment, updateCourse, updateCourseStatus, updateCourseAssignment, deleteCourse };

@@ -18,7 +18,7 @@ import { getUserByEmail } from '../../apis/userApi';
 const Sidebar =  () => {
   const { user } = useContext(AuthContext);
   const user_email = user.email;
-  const [ user_role, setUser_role ] = useState(null)
+  const [ user_role, setUser_role ] = useState('')
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -63,7 +63,8 @@ const Sidebar =  () => {
         <ul className='list-none pt-28 ml-4 lg:ml-8  '>
         {user_role==='student' ? studentLinks 
         :user_role==='teacher' ? teacherLinks
-        :adminLinks
+        :user_role==='admin' ? adminLinks
+        : ''
         }
         </ul>
       </div>
@@ -79,7 +80,8 @@ const Sidebar =  () => {
         <ul className='list-none pt-28 ml-4 lg:ml-8  '>
         {user_role==='student' ? studentLinks 
         :user_role==='teacher' ? teacherLinks
-        :adminLinks
+        :user_role==='admin' ? adminLinks
+        : ''
         }
         </ul>
         </div>

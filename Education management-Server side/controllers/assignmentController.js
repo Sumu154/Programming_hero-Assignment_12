@@ -40,4 +40,29 @@ const getAssignmentById = async (req, res) => {
 }
 
 
-module.exports = { createAssignment, getAssignments, getAssignmentById };
+const getAssignmentsByCourse = async (req, res) => {
+  try{
+    const { course_id } = req.params;
+    // console.log(id);
+    const assignments = await assignmentModel.find( { course_id } );
+    res.status(200).json(assignments);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+
+// update assignment_submission
+const updateAssignmentSubmission = async (req, res) => {
+  // try{
+  //   const {  }
+  // }
+  // catch(e){
+
+  // }
+}
+
+
+
+module.exports = { createAssignment, getAssignments, getAssignmentById, getAssignmentsByCourse };

@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const path = require('path');
 const cors = require('cors');
+const stripe = require('stripe')(process.env.PAYMENT_GATEWAY_SK);
 
 
 const app = express();

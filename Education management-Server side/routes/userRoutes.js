@@ -11,9 +11,10 @@ router.get('/users', getUsers);
 router.get('/users/:user_id', getUserById);
 // get users by email
 router.get('/users/user_email/:user_email', getUserByEmail) //ekta specific email er info
+
 // get user role
 router.get('/users/:user_email/user_role', getUserRole)
-// get users by email
+// get user role
 router.patch('/users/:user_email/user_role', updateUserRoleAdmin)
 
 
