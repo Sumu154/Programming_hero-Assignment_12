@@ -30,6 +30,7 @@ const feedbackRoutes = require('./routes/feedbackRoutes')
 const courseRoutes = require('./routes/courseRoutes')
 const assignmentRoutes = require('./routes/assignmentRoutes')
 const enrollmentRoutes = require('./routes/enrollmentRoutes')
+const paymentRoutes = require('./routes/paymentRoutes')
 
 app.get('/', (req, res) => {
   res.send('hello.....assignment 12 hbe ki?')

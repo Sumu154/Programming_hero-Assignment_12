@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import Lottie from 'lottie-react';
 import { MdOutlinePayment } from "react-icons/md";
 
 import processingL from '../../assets/Animations/processing.json'
 import Swal from 'sweetalert2';
+import { makePaymentIntents } from '../../apis/paymentApi';
 
 
 const PaymentForm = () => {
@@ -14,7 +15,23 @@ const PaymentForm = () => {
   const [ error, setError ] = useState(null);
   const [ processing, setProcessing ] = useState(false);
   const [ success, setSuccess ] = useState(false);
+  const [ clientSecret, setClientSecret ] = useState("");
 
+  useEffect(() => {
+    const fetchClientSecret = async () => {
+      try{
+        if(price){
+          const secret = await makePaymentIntents(price);
+          setClientSecret(secret);
+        }
+      } 
+      catch (e) {
+        console.error("Error fetching clientSecret:", e);
+      }
+    };
+  
+    fetchClientSecret();
+  }, [])
 
   const handlePayment = async (e) => {
     e.preventDefault();
