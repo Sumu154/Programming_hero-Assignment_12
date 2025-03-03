@@ -49,6 +49,12 @@ export const getCourseAssignment = async (course_id) => {
   return res.data;
 }
 
+// get course_price
+export const getCoursePrice = async (course_id) => {
+  const res = await axiosInstance.get(`/courses/${course_id}/course_price`);
+  return res.data;
+}
+
 export const updateCourse = async (course_id, course) => {
   const res = await axiosInstance.patch(`/courses/${course_id}`, course);
   return res.data;

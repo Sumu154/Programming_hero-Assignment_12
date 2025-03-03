@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const path = require('path');
@@ -42,7 +43,7 @@ app.use('/api', feedbackRoutes)
 app.use('/api', courseRoutes)
 app.use('/api', assignmentRoutes)
 app.use('/api', enrollmentRoutes)
-
+app.use('/api', paymentRoutes)
 
 app.listen(port, () => {
   console.log(`server is running at port ${port} `)

@@ -94,6 +94,19 @@ const getCourseAssignment = async (req, res) => {
     }
 }
 
+
+// get course er ekta info -> course_price chai
+const getCoursePrice = async (req, res) => {
+  try{
+      const { course_id } = req.params;
+      const course = await courseModel.findOne( {_id:course_id} );
+      res.status(200).json(course.user_enrollment);
+    }
+    catch(e){
+      res.status(500).json({ message: 'Internal server error: ', error:e.message });
+    }
+}
+
 // update a course by course_id -> but status and enrollment same thakbe -> patch
 const updateCourse = async (req, res) => {
   try{
@@ -177,4 +190,4 @@ const deleteCourse = async (req, res) => {
 }
 
 
-module.exports = { createCourse, getCourses, getCourseById, getCourseByStatus, getPopularCourses, getUserEnrollment, getCourseAssignment, updateCourse, updateCourseStatus, updateCourseAssignment, deleteCourse };
+module.exports = { createCourse, getCourses, getCourseById, getCourseByStatus, getPopularCourses, getUserEnrollment, getCourseAssignment, getCoursePrice, updateCourse, updateCourseStatus, updateCourseAssignment, deleteCourse };

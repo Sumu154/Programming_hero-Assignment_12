@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createCourse, getCourses, getCourseById, getCourseByStatus, getPopularCourses, getUserEnrollment, updateCourse, updateCourseStatus, updateCourseAssignment, deleteCourse, getCourseAssignment } = require('../controllers/courseController');
+const { createCourse, getCourses, getCourseById, getCourseByStatus, getPopularCourses, getUserEnrollment, updateCourse, updateCourseStatus, updateCourseAssignment, deleteCourse, getCourseAssignment, getCoursePrice } = require('../controllers/courseController');
 
 
 // create a course -> post
@@ -19,7 +19,8 @@ router.get('/courses/course_status/:course_status', getCourseByStatus);
 router.get('/courses/:course_id/user_enrollment', getUserEnrollment)
 // get course_assignment from a course
 router.get('/courses/:course_id/course_assignment', getCourseAssignment)
-
+// get course_price from a course
+router.get('/courses/:course_id/course_price', getCoursePrice);
 // update a course -> put
 router.patch('/courses/:course_id', updateCourse);
 // update course state -> pending to approve/reject
