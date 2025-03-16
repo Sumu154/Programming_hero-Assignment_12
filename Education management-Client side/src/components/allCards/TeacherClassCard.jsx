@@ -17,7 +17,7 @@ const TeacherClassCard = ( { course } ) => {
   const { courses, setCourses } = useContext(CourseContext)
 
   const handleDeleteCourse = async () => {
-    //console.log(id);
+    ////console.log(id);
 
     const alert = await Swal.fire({
       title: "Are you sure?",
@@ -34,7 +34,7 @@ const TeacherClassCard = ( { course } ) => {
       const res1 = await deleteCourse(course_id);
 
       if(res1.status===200){
-        console.log('its in');
+        //console.log('its in');
         setCourses(prevCourses => prevCourses.filter(it => it._id !== course_id)); //react prev state course theke course_id er element ta remove
         await Swal.fire({
           title: "Deleted!",

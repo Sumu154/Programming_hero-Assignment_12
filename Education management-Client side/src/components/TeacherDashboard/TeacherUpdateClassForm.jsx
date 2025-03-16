@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { updateCourse } from '../../apis/courseApi';
 
 const TeacherUpdateClassForm = ( {course_id} ) => {
-  // console.log(course_id)
+  // //console.log(course_id)
 
   const { user } = useContext(AuthContext);
   const user_name = user.displayName;
@@ -24,11 +24,11 @@ const TeacherUpdateClassForm = ( {course_id} ) => {
     const course_price = form.get('price');
 
     const course = { course_title, course_image, teacher_name, teacher_email, course_description, course_price };
-    console.log(course);
+    //console.log(course);
 
      // database e store korte hbe
      const data = await updateCourse(course_id, course)
-     console.log(data);
+     //console.log(data);
 
      Swal.fire({
       title: "Class updated successfully!",

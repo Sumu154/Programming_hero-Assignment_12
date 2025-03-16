@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 // Request Interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log("Request Sent:", config);
+    //console.log("Request Sent:", config);
     return config;
   },
   (error) => {
@@ -24,7 +24,7 @@ axiosInstance.interceptors.request.use(
 // Response Interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log("Response Received:", response);
+    //console.log("Response Received:", response);
     return response;
   },
   (error) => {

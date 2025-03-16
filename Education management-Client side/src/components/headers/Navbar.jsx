@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
-  // console.log('user', user.photoURL);
+  // //console.log('user', user.photoURL);
 
   const navigate = useNavigate();
   const path = useLocation().pathname;
@@ -26,12 +26,12 @@ const Navbar = () => {
 
       // token clear
       // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/logout', {}, {withCredentials: true});
-      // console.log(res2.data);
+      // //console.log(res2.data);
 
       navigate('/auth/login');
     }
     catch(e){
-      // console.log(e);
+      // //console.log(e);
     }
 
   }

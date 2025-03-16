@@ -11,9 +11,9 @@ const AdminClassCard = ( {course, onStatusUpdate} ) => {
   const { _id:course_id, course_title, course_image, teacher_name, teacher_email, course_description, course_price, course_status, user_enrollment } = course;
 
   const handleUpdateCourseStatus = async (input_status) => {
-    // console.log(course_id, input_status);
+    // //console.log(course_id, input_status);
     const data = await updateCourseStatus(course_id, input_status);
-    // console.log(data);
+    // //console.log(data);
     onStatusUpdate?.(); // Notify parent to refresh data
 
 
@@ -51,7 +51,7 @@ const AdminClassCard = ( {course, onStatusUpdate} ) => {
         <p className='text-dark/70 text-[15px] '> {course_description} </p>
       </div>
       {/* buttons */}
-      <div className='px-3 mt-8 mb-3 '> <Link to={`/dashboard/teacherClasses/${course_id}`}> 
+      <div className='px-3 mt-8 mb-3 '> <Link to={`/dashboard/adminClasses/${course_id}`}> 
         <button className={`rounded-lg w-full  py-[6px]  text-white  
           ${course_status==='pending' || course_status==='rejected' ? 'bg-ash cursor-not-allowed' : 'bg-orchid/95  hover:bg-orchid'}`} 
           disabled={course_status==='pending' || course_status==='rejected'}> See progress 

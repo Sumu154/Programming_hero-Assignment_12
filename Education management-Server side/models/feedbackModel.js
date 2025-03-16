@@ -2,12 +2,10 @@ const mongoose = require('mongoose');
 const connectDB = require('../config/db');
 
 const feedbackSchema = new mongoose.Schema({
-  feedback: String,
-  rating: String,
-  course_id: String,
-  course_name: String,
-  user_email: String,   //jake feedback dea hbe
-  teacher_email: String,  // jei instructor dibe
+  user_email: String,   //je feedback ta dibe 
+  course_id: String,   // kon courser feedback
+  feedback_rating: String,
+  feedback_description: String,
 })
 
 module.exports = mongoose.model('Feedback', feedbackSchema);

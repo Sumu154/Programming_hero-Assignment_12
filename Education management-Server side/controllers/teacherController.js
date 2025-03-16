@@ -68,6 +68,8 @@ const getTeacherById = async (req, res) => {
 }
 
 
+
+
 // update a teacher status only
 const updateTeacherStatus = async (req, res) => {
   try{

@@ -8,8 +8,7 @@ router.post('/enrollments', createEnrollment);
 // show all enrollments -> get
 router.get('/enrollments', getEnrollments);
 // get enrollments by email
-router.get('/enrollments/email/:user_email', getEnrollmentByEmail);
-
+router.get('/enrollments/user_email/:user_email/course', getEnrollmentByEmail);
 
 
 module.exports = router;

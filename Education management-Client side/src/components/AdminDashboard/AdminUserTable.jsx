@@ -23,7 +23,7 @@ const AdminUserTable = () => {
     const data1 = await updateUserRole(user_email, 'admin');
     const data2 = await getUsers();
     setUsers(data2);
-    // console.log(data1, data2);
+    // //console.log(data1, data2);
 
     Swal.fire({
       title: `${user_name}  has been promoted to admin!`,

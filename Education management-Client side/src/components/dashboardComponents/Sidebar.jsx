@@ -4,9 +4,9 @@ import { CgProfile } from "react-icons/cg";
 import { MdClass } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
-import { FaAngleRight, FaBars } from "react-icons/fa";
 import { PiSidebarDuotone } from "react-icons/pi";
 import { MdRequestPage } from "react-icons/md";
+import { BiSolidPurchaseTag } from "react-icons/bi";
 import { HiUsers } from "react-icons/hi2";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -23,7 +23,7 @@ const Sidebar =  () => {
   useEffect(() => {
     const fetchUser = async () => {
       const data = await getUserByEmail(user_email);
-      console.log(data);
+      //console.log(data);
 
       setUser_role(data.user_role);
     }
@@ -40,21 +40,22 @@ const Sidebar =  () => {
 
   const studentLinks = <>
     <li> <NavLink to="/dashboard"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <CgProfile  className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
-    <li> <NavLink to="/dashboard/studentClasses"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass  className='text-xl' /> <span> Classes </span> </div> </NavLink> </li>
-    <li> <NavLink to="/dashboard/studentAssignments"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdOutlineAssignment className='text-xl'  /> <span> Assignments </span> </div> </NavLink> </li>
+    <li> <NavLink to="/dashboard/studentClasses" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass  className='text-xl' /> <span> Classes </span> </div> </NavLink> </li>
+    <li> <NavLink to="/dashboard/studentAssignments" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdOutlineAssignment className='text-xl'  /> <span> Assignments </span> </div> </NavLink> </li>
+    <li> <NavLink to="/dashboard/studentOrders" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <BiSolidPurchaseTag className='text-xl'  /> <span> Orders </span> </div> </NavLink> </li>
   </>
 
   const adminLinks = <>
-  <li> <NavLink to="/dashboard"> <div className='flex gap-2 items-center text-[17px] mb-2'> <CgProfile className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/adminUsers"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <HiUsers className='text-xl'/> <span> All Users </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/adminClasses"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass  className='text-xl'/> <span> All classes </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/adminTeachers"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdRequestPage className='text-xl' /> <span> Teacher request </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard" > <div className='flex gap-2 items-center text-[17px] mb-2 hover:font-semibold'> <CgProfile className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/adminUsers" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <HiUsers className='text-xl'/> <span> All Users </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/adminClasses" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass  className='text-xl'/> <span> All classes </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/adminTeachers" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdRequestPage className='text-xl' /> <span> Teacher request </span> </div> </NavLink> </li>
   </>
 
   const teacherLinks = <>
   <li> <NavLink to="/dashboard"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <CgProfile className='text-lg' /> <span> Profile </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/addClass"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdLibraryAdd className='text-xl' /> <span> Add class </span> </div> </NavLink> </li>
-  <li> <NavLink to="/dashboard/teacherClasses"> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass className='text-xl' /><span> My classes </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/addClass" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdLibraryAdd className='text-xl' /> <span> Add class </span> </div> </NavLink> </li>
+  <li> <NavLink to="/dashboard/teacherClasses" className={({ isActive }) => isActive ? "font-semibold" : ""}> <div className='flex gap-2 items-center  lg:text-[17px] mb-2 hover:font-semibold'> <MdClass className='text-xl' /><span> My classes </span> </div> </NavLink> </li>
   </>
 
   return (

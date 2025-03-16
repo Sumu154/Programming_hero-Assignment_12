@@ -19,15 +19,16 @@ export const getTeacherByEmail = async (teacher_email) => {
   return res.data;
 }
 
-
+// get teachers by status
 export const getTeacherByStatus = async (teacher_status) => {
   const res = await axiosInstance.get(`/teachers/teacher_status/${teacher_status}`)
   return res.data;
 }
 
+
 // update status -> approved / rejected
 export const updateTeacherStatus = async (teacher_id, teacher_status) => {
-  console.log('in api', teacher_id, teacher_status);
+  //console.log('in api', teacher_id, teacher_status);
   const res = await axiosInstance.patch(`/teachers/${teacher_id}/status`, {teacher_status})
   return res.data;
 }

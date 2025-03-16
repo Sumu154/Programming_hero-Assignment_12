@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 const TeacherClassDetailsPage = () => {
   const { id }= useParams();
-  console.log(id);
+  //console.log(id);
 
 
   return (

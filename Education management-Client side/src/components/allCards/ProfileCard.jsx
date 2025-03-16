@@ -4,13 +4,12 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 
 import { AuthContext } from '../../contexts/AuthProvider';
-import axiosInstance from '../../config/axiosInstance';
 import { getUserByEmail } from '../../apis/userApi';
 
 const ProfileCard = () => {
   const { user } = useContext(AuthContext);    //ei user jeta firebase e save hoye ace
   const user_email = user.email;
-  // console.log(user_email)
+  // //console.log(user_email)
 
   const [ userInfo, setUserInfo ] = useState({});   //so databse theke nite gele amar new variable e set korte hbe..setUser ekhane korte parbo na
  
@@ -23,7 +22,7 @@ const ProfileCard = () => {
     fetchUserInfo();
   }, [user_email])
 
-  console.log(userInfo);
+  //console.log(userInfo);
 
   const { user_name, user_image, user_role } = userInfo;
 

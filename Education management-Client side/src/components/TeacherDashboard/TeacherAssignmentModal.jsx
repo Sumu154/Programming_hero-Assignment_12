@@ -16,7 +16,7 @@ const TeacherAssignmentModal = ( { course_id, modalOpen, setModalOpen } ) => {
 
   const { user } = useContext(AuthContext);
   const teacher_email = user.email;
-  console.log(teacher_email);
+  //console.log(teacher_email);
 
   const [ assignment_deadline, setAssignment_deadline ] = useState(new Date());
 
@@ -28,7 +28,7 @@ const TeacherAssignmentModal = ( { course_id, modalOpen, setModalOpen } ) => {
     const assignment_description = form.get('assignment_description');
     const assignment_submission = 0;
     const assignment = { course_id, teacher_email, assignment_title, assignment_deadline, assignment_description, assignment_submission };
-    console.log(assignment);
+    //console.log(assignment);
 
     // databse e add
     const res1 = await createAssignment(assignment);
@@ -37,7 +37,7 @@ const TeacherAssignmentModal = ( { course_id, modalOpen, setModalOpen } ) => {
     }
     // course e ekta assignment increment
     const res2 = await updateCourseAssignment(course_id, 'increment');
-    console.log(res1, res2);
+    //console.log(res1, res2);
 
     toast.success('assignment successfully created!', {
       position: "top-center",

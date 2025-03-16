@@ -43,6 +43,7 @@ const getCourseById = async (req, res) => {
 
 // get courses by user_email
 
+
 // get a course by status
 const getCourseByStatus = async (req, res) => {
   try{
@@ -50,6 +51,28 @@ const getCourseByStatus = async (req, res) => {
 
     const courses = await courseModel.find({ course_status })
     res.status(200).json(courses);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+const getCourseByStatusWithLimit = async (req, res) => {
+  try{
+    const { page, limit } = req.query;
+    const course_status = req.params.course_status;
+
+    const pageNumber = parseInt(page);
+    const limitNumber = parseInt(limit);
+
+    const totalCourses = await courseModel.countDocuments({ course_status });
+
+    // Fetch courses with pagination
+    const courses = await courseModel.find({ course_status }).skip(pageNumber*limitNumber).limit(limitNumber);
+    res.status(200).json({ 
+      courses, 
+      totalPages: Math.ceil(totalCourses/limitNumber) // Send total pages count
+    });
   }
   catch(e){
     res.status(500).json({ message: 'Internal server error: ', error:e.message });
@@ -100,13 +123,39 @@ const getCoursePrice = async (req, res) => {
   try{
       const { course_id } = req.params;
       const course = await courseModel.findOne( {_id:course_id} );
-      res.status(200).json(course.user_enrollment);
+      res.status(200).json(course.course_price);
     }
     catch(e){
       res.status(500).json({ message: 'Internal server error: ', error:e.message });
     }
 }
 
+
+// get course er ekta info -> course_title chai
+const getCourseTitle = async (req, res) => {
+  try{
+      const { course_id } = req.params;
+      const course = await courseModel.findOne( {_id:course_id} );
+      res.status(200).json(course.course_title);
+    }
+    catch(e){
+      res.status(500).json({ message: 'Internal server error: ', error:e.message });
+    }
+}
+
+// get teacher_name by course_id
+const getTeacherName = async (req, res) => {
+  try{
+    const { course_id } = req.params;
+    const course = await courseModel.findOne( {_id:course_id} );
+      res.status(200).json(course.teacher_email);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });   
+  }
+}
+
+ 
 // update a course by course_id -> but status and enrollment same thakbe -> patch
 const updateCourse = async (req, res) => {
   try{
@@ -190,4 +239,20 @@ const deleteCourse = async (req, res) => {
 }
 
 
-module.exports = { createCourse, getCourses, getCourseById, getCourseByStatus, getPopularCourses, getUserEnrollment, getCourseAssignment, getCoursePrice, updateCourse, updateCourseStatus, updateCourseAssignment, deleteCourse };
+module.exports = { 
+  createCourse, 
+  getCourses, 
+  getCourseById, 
+  getCourseByStatus, 
+  getCourseByStatusWithLimit,
+  getPopularCourses, 
+  getUserEnrollment, 
+  getCourseAssignment, 
+  getCoursePrice, 
+  getCourseTitle, 
+  getTeacherName,
+  updateCourse, 
+  updateCourseStatus, 
+  updateCourseAssignment, 
+  deleteCourse
+};

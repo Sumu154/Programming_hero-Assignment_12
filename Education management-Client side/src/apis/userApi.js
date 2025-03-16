@@ -26,7 +26,7 @@ export const getUserRole = async (user_email) => {
 
 //make a specific email user admin -> patch update of user 
 export const updateUserRole = async (user_email, user_role) => {
-  console.log(user_role, user_email)
+  //console.log(user_role, user_email)
   const res = await axiosInstance.patch(`/users/${user_email}/user_role`, {user_role})
   return res.data;
 }

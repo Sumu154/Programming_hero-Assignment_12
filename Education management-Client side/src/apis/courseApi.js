@@ -26,8 +26,14 @@ export const getCourseById = async (course_id) => {
 }
 
 export const getCourseByStatus = async (course_status) => {
-  console.log(course_status)
+  //console.log(course_status)
   const res = await axiosInstance.get(`/courses/course_status/${course_status}`)
+  return res.data;
+}
+
+
+export const getCourseByStatusWithLimit = async (course_status, page, limit) => {
+  const res = await axiosInstance.get(`/courses/course_status/${course_status}/limited`, { params: { page, limit } });
   return res.data;
 }
 
@@ -55,13 +61,25 @@ export const getCoursePrice = async (course_id) => {
   return res.data;
 }
 
+// get course_title
+export const getCourseTitle = async (course_id) => {
+  const res = await axiosInstance.get(`/courses/${course_id}/course_title`);
+  return res.data;
+}
+
+// get teacher_name by course_id
+export const getTeacherName = async (course_id) => {
+  const res = await axiosInstance.get(`/courses/${course_id}/teacher_name`)
+  return res.data;
+}
+
 export const updateCourse = async (course_id, course) => {
   const res = await axiosInstance.patch(`/courses/${course_id}`, course);
   return res.data;
 }
 
 export const updateCourseStatus = async (course_id, course_status) => {
-  console.log('in api', course_id, course_status);
+  //console.log('in api', course_id, course_status);
   const res = await axiosInstance.patch(`/courses/${course_id}/course_status`, {course_status})
   return res.data;
 }

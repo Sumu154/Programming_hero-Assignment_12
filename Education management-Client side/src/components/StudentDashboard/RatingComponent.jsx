@@ -8,7 +8,7 @@ const RatingComponent = ( { rating, setRating } ) => {
 
   const handleRating = (index) => {
     setRating(index); // Set rating based on clicked star
-    console.log(rating);
+    //console.log(rating);
   };
 
   return (

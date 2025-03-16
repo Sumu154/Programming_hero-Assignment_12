@@ -15,7 +15,7 @@ const AdminClasses = () => {
     fetchCourses();
   }, [])
 
-  console.log(courses);
+  //console.log(courses);
 
 
   return (

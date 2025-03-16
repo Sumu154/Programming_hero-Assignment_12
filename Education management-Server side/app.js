@@ -32,10 +32,8 @@ const courseRoutes = require('./routes/courseRoutes')
 const assignmentRoutes = require('./routes/assignmentRoutes')
 const enrollmentRoutes = require('./routes/enrollmentRoutes')
 const paymentRoutes = require('./routes/paymentRoutes')
+const submissionRoutes = require('./routes/submissionRoutes')
 
-app.get('/', (req, res) => {
-  res.send('hello.....assignment 12 hbe ki?')
-})
 
 app.use('/api', userRoutes)
 app.use('/api', teacherRoutes)
@@ -44,6 +42,13 @@ app.use('/api', courseRoutes)
 app.use('/api', assignmentRoutes)
 app.use('/api', enrollmentRoutes)
 app.use('/api', paymentRoutes)
+app.use('/api', submissionRoutes)
+
+
+
+app.get('/', (req, res) => {
+  res.send('hello.....assignment 12 hbe ki?')
+})
 
 app.listen(port, () => {
   console.log(`server is running at port ${port} `)

@@ -19,7 +19,7 @@ const LoginForm = () => {
     const form = new FormData(e.target);
     const user_email = form.get('email');
     const password = form.get('password');
-    console.log(user_email, password);
+    //console.log(user_email, password);
 
 
     try{
@@ -27,7 +27,7 @@ const LoginForm = () => {
       const user = res.user;
 
       // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
-      // console.log(res2.data);
+      // //console.log(res2.data);
 
       setUser(user);
       toast.success('Successfully logged in!', {
@@ -54,12 +54,12 @@ const LoginForm = () => {
       const res = await signInWithGoogle();
 
       // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
-      // console.log(res2.data);
+      // //console.log(res2.data);
       
       navigate('/')
     }
     catch(e){
-      // console.log('ERROR', e.message)
+      // //console.log('ERROR', e.message)
     }
   };
 

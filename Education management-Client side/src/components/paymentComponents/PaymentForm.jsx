@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import Lottie from 'lottie-react';
 import { MdOutlinePayment } from "react-icons/md";
 
 import processingL from '../../assets/Animations/processing.json'
 import Swal from 'sweetalert2';
-import { makePaymentIntents } from '../../apis/paymentApi';
+import { getPaymentIntent } from '../../apis/paymentApi';
+import { createEnrollment } from '../../apis/enrollmentApi';
+import { AuthContext } from '../../contexts/AuthProvider';
+import { toast } from 'react-toastify';
+import { getTeacherName } from '../../apis/courseApi';
 
 
-const PaymentForm = ( { course_price } ) => {
+const PaymentForm = ( { course_id, course_price } ) => {
+  const { user } = useContext(AuthContext);
+  const user_email = user.email;
+
   const stripe = useStripe();
   const elements = useElements();
   
@@ -38,37 +45,63 @@ const PaymentForm = ( { course_price } ) => {
 
     try{
       // 1) clientSecret key ta generate 
-      const paymentIntent = await makePaymentIntents(course_price);
-      console.log('paymentIntent', paymentIntent);
-      setProcessing(false);
+      const data = await getPaymentIntent(course_price);
+      const clientSecret = data.client_secret;
+      const transactionId = data.transaction_id;
+      //console.log(clientSecret, transactionId);
+    
 
+      
       // 2) confirm payment with stripe
-      // const { error:confirmError, paymentMethod } = await stripe.confirmCardPayment(clientSecret, {
-      //   payment_method: { 
-      //     card: cardElement,
-      //     billing_details: {
-      //       // email, username 
-      //     }
-      //   },
-      // });
+      const { error:confirmError, paymentIntent  } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: { 
+          card: cardElement,
+          billing_details: {
+            email: user_email,
 
-      // 3) 
-      // if(confirmError) {
-      //   setError(confirmError.message);
-      // } 
-      // else{
-      //   console.log("Payment Method:", paymentMethod);
-      //   setSuccess(true);
-      //   setError(null);
-  
-      //   Swal.fire({
-      //     title: "Thank You! Payment Completed.",
-      //     icon: "success",
-      //     customClass: {
-      //       popup: 'small-modal'
-      //     }
-      //   });
-      // }
+          }
+        },
+      });
+
+      // 3) confirm payment 
+      if(confirmError) {
+        setError(confirmError.message);
+      } 
+      else{
+        //console.log("Payment Method:", paymentIntent.payment_method);
+        setError(null);
+
+        const enrollment = { user_email, course_id, order_transaction_id:transactionId  };
+
+        // database e store on database
+        try{
+          // enrollment database e store -> kon user kon kon course enroll korce + oi courser transaction_id
+          const res = await createEnrollment(enrollment);
+          //console.log(res.data);
+        }
+        catch(e){
+          // //console.log('e', e.status);
+          if(e.response.status === 400){
+            toast.error('You have already enrolled this course!', {
+              position: "top-center",
+              autoClose: 1000,
+              theme: "dark",
+            });
+          }
+          setProcessing(false);
+          return;
+        }
+
+        // payment successful hole ja korbo
+        setSuccess(true);
+        Swal.fire({
+          title: "Thank You! Payment Completed.",
+          icon: "success",
+          customClass: {
+            popup: 'small-modal'
+          }
+        });
+      }
     } 
     catch (e) {
       console.error("Error fetching clientSecret:", e);
@@ -78,7 +111,7 @@ const PaymentForm = ( { course_price } ) => {
   }
 
   return (
-    <div className='max-w-[420px] mx-auto '>
+    <div className='max-w-[420px] px-4 mx-auto '>
       <form className='' onSubmit={handlePayment}>
         <CardElement className=' border-[1px] border-dark/15 px-4 py-3 rounded-[2px] '></CardElement>
 

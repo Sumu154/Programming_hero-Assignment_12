@@ -27,6 +27,7 @@ const getAssignments = async (req, res) => {
   }
 }
 
+// assignment_id diye pabo
 const getAssignmentById = async (req, res) => {
   try{
     const id = req.params.id;
@@ -40,6 +41,7 @@ const getAssignmentById = async (req, res) => {
 }
 
 
+// course_id diye oi courser shb assignment pabo
 const getAssignmentsByCourse = async (req, res) => {
   try{
     const { course_id } = req.params;
@@ -53,16 +55,52 @@ const getAssignmentsByCourse = async (req, res) => {
 }
 
 
-// update assignment_submission
+// update assignment_submission -> increase one
 const updateAssignmentSubmission = async (req, res) => {
-  // try{
-  //   const {  }
-  // }
-  // catch(e){
+  try{
+    const { assignment_id } = req.params;
+    console.log(assignment_id);
 
-  // }
+    const assignment = await assignmentModel.findOne({ _id:assignment_id });
+
+    assignment.assignment_submission += 1;
+    await assignment.save();
+    res.status(200).json(assignment);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+
+// aggregate related
+const getAssignmentSubmissionPerCourse = async (req, res) => {
+  try{
+    const { course_id } = req.params;
+
+    const totalSubmissions = await assignmentModel.aggregate([
+      {
+        $match: { course_id } // Filter assignments for the given course_id
+      },
+      {
+        $group: {
+          _id: null,  // kono kicur opor group bananor drkar nei
+          total_submissions: { $sum: "$assignment_submission" }
+        }
+      }
+    ]);
+    console.log(totalSubmissions);
+
+    // If no submissions found, return 0
+    const total = totalSubmissions.length>0 ? totalSubmissions[0].total_submissions : 0;
+    res.status(200).json(total);
+
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
 }
 
 
 
-module.exports = { createAssignment, getAssignments, getAssignmentById, getAssignmentsByCourse };
+module.exports = { createAssignment, getAssignments, getAssignmentById, getAssignmentsByCourse, updateAssignmentSubmission, getAssignmentSubmissionPerCourse };

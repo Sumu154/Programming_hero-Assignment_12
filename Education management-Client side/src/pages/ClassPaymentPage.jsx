@@ -10,9 +10,9 @@ import { getCoursePrice } from '../apis/courseApi';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 const ClassPaymentPage = () => {
   const { id } = useParams();
-  // console.log(id);
+  // //console.log(id);
   const [ course_price, setCourse_price ] = useState('');
-  console.log(stripePromise);
+  // //console.log(stripePromise);
 
   useEffect(() => {
     const fetchCoursePrice = async () => {
@@ -20,7 +20,7 @@ const ClassPaymentPage = () => {
       setCourse_price(data);
     } 
     fetchCoursePrice();
-  }, [])
+  }, [id])
   
   
   return (
@@ -33,7 +33,7 @@ const ClassPaymentPage = () => {
         <h3 className='text-center font-Montserrat text-xl sm:text-2xl lg:text-3xl text-dark/90 font-semibold mb-8'> Please pay to enroll </h3>
         
         <Elements stripe={stripePromise}>
-          <PaymentForm course_price={course_price} ></PaymentForm>
+          <PaymentForm course_id={id} course_price={course_price} ></PaymentForm>
         </Elements>
       </div>
     </div>

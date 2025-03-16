@@ -37,7 +37,7 @@ const RegisterForm = () => {
     const user_role = 'student';
     const course_enrollment = 0;
     const user = {user_name, user_email, user_image, password, user_role, course_enrollment};
-    console.log(user);
+    //console.log(user);
 
     const passError = validPassword(password);
     if(passError){
@@ -48,18 +48,18 @@ const RegisterForm = () => {
     // register kore fellam -> firebase
     try{
       const res1 = await createNewUser(user_email, password);
-      console.log(res1.user);
+      //console.log(res1.user);
 
       // // token create korlam
       // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
-      // console.log(res2.data);
+      // //console.log(res2.data);
 
       // update kore dibo
       await updateUserProfile({
         displayName: user_name,
         photoURL: user_image,
       })
-      // console.log(res.user);
+      // //console.log(res.user);
       toast.success('Successfully registered user!', {
         position: "top-center",
         autoClose: 1000,
@@ -70,12 +70,12 @@ const RegisterForm = () => {
 
       // database e add korbo ekhn
       const res2 = await createUser(user);
-      // console.log(res2.data);
+      // //console.log(res2.data);
     }
     catch(e){
       const errorCode = e.code;
       const errorMessage = e.message;
-      // console.log(errorCode, errorMessage);
+      // //console.log(errorCode, errorMessage);
       toast.error(`Error: ${errorCode} !`, {
         position: "top-center",
         autoClose: 1000,
@@ -91,7 +91,7 @@ const RegisterForm = () => {
       navigate('/')
     }
     catch(e){
-      console.log('ERROR', e.message)
+      //console.log('ERROR', e.message)
     }
 
   }

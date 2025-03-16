@@ -1,6 +1,6 @@
 const stripe = require('stripe')(process.env.PAYMENT_GATEWAY_SK);
 
-const makePaymentIntents = async (req, res) => {
+const getPaymentIntent = async (req, res) => {
   const { course_price } = req.body;
   console.log(course_price);
   const amount = parseInt(course_price * 100);
@@ -13,12 +13,15 @@ const makePaymentIntents = async (req, res) => {
     });
 
     console.log(paymentIntent);
-    res.status(200).json({ clientSecret: paymentIntent.client_secret });
+    res.status(200).json({
+      transaction_id: paymentIntent.id, // Transaction ID
+      client_secret: paymentIntent.client_secret, // Client Secret
+    });
   }
   catch(e){
-    res.status(400).json({ error: e.message });
+    res.status(500).json({ error: e.message });
   }
 }
 
-module.exports = { makePaymentIntents };
+module.exports = { getPaymentIntent };
 

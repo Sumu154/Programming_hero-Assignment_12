@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createAssignment, getAssignments, getAssignmentById, getAssignmentsByCourse } = require('../controllers/assignmentController');
+const { createAssignment, getAssignments, getAssignmentById, getAssignmentsByCourse, updateAssignmentSubmission, getAssignmentSubmissionPerCourse } = require('../controllers/assignmentController');
 
 
 // create a teacher -> post
@@ -11,5 +11,12 @@ router.get('/assignments', getAssignments);
 router.get('/assignments/:assignment_id', getAssignmentById);
 // get assignments by course
 router.get('/assignments/course_id/:course_id', getAssignmentsByCourse);
+
+// update assignment_submission
+router.patch('/assignments/:assignment_id/assignment_submission', updateAssignmentSubmission)
+
+// get total submission of a course
+router.get('/assignments/course_id/:course_id/total_submissions', getAssignmentSubmissionPerCourse)
+
 
 module.exports = router;

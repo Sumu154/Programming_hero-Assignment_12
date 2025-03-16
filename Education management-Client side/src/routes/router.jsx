@@ -32,6 +32,9 @@ import AdminTeachersPage from "../pages/AdminTeachersPage";
 import TeacherClassUpdatePage from "../pages/TeacherClassUpdatePage";
 import StudentClassDetailsPage from "../pages/StudentClassDetailsPage";
 import ClassPaymentPage from "../pages/ClassPaymentPage";
+import AdminClassDetailsPage from "../components/AdminDashboard/AdminClassDetailsPage";
+import StudentOrdersPage from "../pages/StudentOrdersPage";
+import StudentDownloadAndPreviewInvoicePage from "../pages/StudentDownloadAndPreviewInvoicePage";
 
 
 
@@ -109,6 +112,14 @@ const router = createBrowserRouter([
         path: "/dashboard/studentAssignments",
         element: <PrivateRoute> <StudentAssignmentPage></StudentAssignmentPage> </PrivateRoute>
       },
+      {
+        path: "/dashboard/studentOrders",
+        element: <PrivateRoute> <StudentOrdersPage></StudentOrdersPage>  </PrivateRoute>
+      },
+      {
+        path: "/dashboard/studentOrders/downloadViewInvoice",
+        element: <PrivateRoute> <StudentDownloadAndPreviewInvoicePage></StudentDownloadAndPreviewInvoicePage>  </PrivateRoute>
+      },
       // teacher dashboard links
       {
         path: "/dashboard/addClass",
@@ -129,10 +140,14 @@ const router = createBrowserRouter([
           return params.id;
         }
       },
-      //Admin dashboard links
+      // admin dashboard links
       {
         path: "/dashboard/adminClasses",
         element: <PrivateRoute> <AdminClassPage></AdminClassPage>   </PrivateRoute>
+      },
+      {
+        path: "/dashboard/adminClasses/:id",
+        element: <PrivateRoute> <AdminClassDetailsPage></AdminClassDetailsPage>  </PrivateRoute>
       },
       {
         path: "/dashboard/adminUsers",

@@ -9,7 +9,7 @@ const TeacherClasses = () => {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      console.log('all classes here');
+      //console.log('all classes here');
       const data = await getCourses();
       setCourses(data);
     }

@@ -26,11 +26,11 @@ const TeacherAddClassForm = () => {
     const course_assignment = 0;
 
     const course = { course_title, course_image, teacher_name, teacher_email, course_description, course_price, course_status, user_enrollment, course_assignment };
-    console.log(course);
+    //console.log(course);
 
      // database e store korte hbe
      const res = await createCourse(course)
-     console.log(res.data);
+     //console.log(res.data);
 
     Swal.fire({
       title: "Class added successfully!",

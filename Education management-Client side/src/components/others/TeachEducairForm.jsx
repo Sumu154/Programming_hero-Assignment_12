@@ -24,10 +24,10 @@ const TeachEducairForm = () => {
     const teacher_experience = form.get('teacher_experience');
     const teacher_status = 'pending';
     const teacher = { teacher_email, teacher_name, teacher_image, teacher_title, teacher_category, teacher_experience, teacher_status };
-    console.log(teacher);
+    //console.log(teacher);
 
     const data = await createTeacher(teacher);
-    console.log(data);
+    //console.log(data);
     Swal.fire({
       title: "Your request is sent",
       icon: "success",
