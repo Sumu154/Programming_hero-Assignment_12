@@ -31,3 +31,10 @@ export const getAssignmentSubmissionPerCourse = async (course_id) => {
   const res = await axiosInstance.get(`/assignments/course_id/${course_id}/total_submissions`);
   return res.data;
 }
+
+
+// get all the users
+export const getTotalAssignments = async () => {
+  const res = await axiosInstance.get('/totalAssignments');
+  return res.data;
+}

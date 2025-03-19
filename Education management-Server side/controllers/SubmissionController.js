@@ -56,5 +56,10 @@ const getSubmissionsByCourse = async (req, res) => {
 }
 
 
-module.exports = { createSubmission, getSubmissions, getSubmissionById, getSubmissionsByCourse };
+module.exports = { 
+  createSubmission, 
+  getSubmissions, 
+  getSubmissionById, 
+  getSubmissionsByCourse 
+};
 

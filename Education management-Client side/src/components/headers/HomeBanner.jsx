@@ -9,10 +9,10 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 // images
-import banner1 from '../../assets/images/boi khata.jpg'
+import banner4 from '../../assets/images/boi khata.jpg'
 import banner2 from '../../assets/images/boi kahata.webp'
 import banner3 from '../../assets/images/study2.jpg'
-import banner4 from '../../assets/images/study1.jpg'
+import banner1 from '../../assets/images/study1.jpg'
 
 const HomeBanner = () => {
   const images = [banner1, banner2, banner3, banner4];

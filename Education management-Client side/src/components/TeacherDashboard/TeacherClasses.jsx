@@ -1,20 +1,27 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import TeacherClassCard from '../allCards/TeacherClassCard';
-import { CourseContext } from '../../contexts/CourseProvider';
-import axiosInstance from '../../config/axiosInstance';
 import { getCourses } from '../../apis/courseApi';
+import Pagination from '../shared/Pagination';
+
+const ITEMS_PER_PAGE = 8; // Set items per page
 
 const TeacherClasses = () => {
-  const { courses, setCourses } = useContext(CourseContext);
+  const [ courses, setCourses ] = useState([]);
+  const [ currentPage, setCurrentPage ] = useState(0);  // Track page number
+  const [ pageCount, setPageCount ] = useState(0);  // Total pages
+  const [ searchQuery, setSearchQuery] = useState("");
+  
+
+  const fetchCourses = async () => {
+    //console.log('all classes here');
+    const data = await getCourses();
+    setCourses(data);
+    setPageCount(data.totalPages);
+  }
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      //console.log('all classes here');
-      const data = await getCourses();
-      setCourses(data);
-    }
     fetchCourses();
-  }, [setCourses])
+  }, [ currentPage, searchQuery  ])
 
 
 
@@ -25,6 +32,10 @@ const TeacherClasses = () => {
           return <TeacherClassCard key={index} course={it}></TeacherClassCard>
         })}
         
+      </div>
+
+      <div className='mt-12 flex justify-center'>
+        <Pagination pageCount={pageCount} onPageChange={(data) => setCurrentPage(data.selected)} ></Pagination>
       </div>
     </div>
   );

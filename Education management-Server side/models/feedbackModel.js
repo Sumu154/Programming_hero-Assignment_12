@@ -3,8 +3,8 @@ const connectDB = require('../config/db');
 
 const feedbackSchema = new mongoose.Schema({
   user_email: String,   //je feedback ta dibe 
-  course_id: String,   // kon courser feedback
-  feedback_rating: String,
+  course: { type: mongoose.Schema.Types.ObjectId, ref: 'Course' },
+  feedback_rating: Number,
   feedback_description: String,
 })
 

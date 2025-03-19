@@ -35,7 +35,7 @@ const StudentFeedbackModal = ( { course_id, modalOpen, setModalOpen } ) => {
     const form = new FormData(e.target);
     const feedback_description = form.get('feedback_description');
 
-    const feedback = { user_email, course_id, feedback_rating:rating, feedback_description };
+    const feedback = { user_email, course:course_id, feedback_rating:rating, feedback_description };
     //console.log(feedback);
 
     // feedback collection e store

@@ -15,7 +15,8 @@ const {
   updateCourse,  
   deleteCourse, 
   getCourseAssignment, 
-  getCoursePrice 
+  getCoursePrice,
+  getTotalCourses
 } = require('../controllers/courseController');
 
 
@@ -54,6 +55,10 @@ router.patch('/courses/:course_id/course_status', updateCourseStatus)   // input
 router.patch('/courses/:course_id/course_assignment', updateCourseAssignment)
 // delete a course
 router.delete('/courses/:course_id', deleteCourse);
+
+// get total users
+router.get('/totalCourses', getTotalCourses)
+
 
 
 module.exports = router;

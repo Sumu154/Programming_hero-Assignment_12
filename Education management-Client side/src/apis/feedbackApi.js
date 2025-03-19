@@ -13,3 +13,8 @@ export const getFeedbacks = async () => {
   return res.data;
 }
 
+export const getFeedbackWithLimit = async () => {
+  const res = await axiosInstance.get('/feedbacks/limited');
+  return res.data;
+}
+

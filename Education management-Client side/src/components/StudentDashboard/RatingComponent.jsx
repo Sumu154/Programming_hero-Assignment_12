@@ -15,8 +15,8 @@ const RatingComponent = ( { rating, setRating } ) => {
     <div className="flex justify-center gap-1 text-2xl">
       {[1, 2, 3, 4, 5].map((it) => (
         <button key={it} onClick={() => handleRating(it)}>
-          { it <= rating ? <MdStar className="text-orange" /> 
-          : <MdStarBorder className="text-orange" />
+          { it <= rating ? <MdStar className="text-orange text-xl" /> 
+          : <MdStarBorder className="text-orange text-xl " />
           }
         </button>
       ))}

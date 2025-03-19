@@ -27,6 +27,18 @@ const getFeedbacks = async (req, res) => {
   }
 }
 
+// 3 ta feedback for home 
+const getFeedbackWithLimit = async (req, res) => {
+  try{
+    const feedbacks = await feedbackModel.find().limit(3).populate('course', 'course_title');
+    console.log(feedbacks)
+    res.status(200).json(feedbacks);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message })
+  }
+}
+
 const getFeedbackById = async (req, res) => {
   try{
     const id = req.params.id;
@@ -40,4 +52,9 @@ const getFeedbackById = async (req, res) => {
 }
 
 
-module.exports = { createFeedback, getFeedbacks, getFeedbackById };
+module.exports = { 
+  createFeedback, 
+  getFeedbacks, 
+  getFeedbackById, 
+  getFeedbackWithLimit 
+};

@@ -17,7 +17,7 @@ const HomePage = () => {
 
       <HomeBanner></HomeBanner>
       <PopularCourses></PopularCourses>
-      <FeedbackAssignments></FeedbackAssignments>
+      <FeedbackAssignments></FeedbackAssignments> 
       <Informations></Informations>
       <BecomeInstructor></BecomeInstructor>
       <Sponsors></Sponsors>

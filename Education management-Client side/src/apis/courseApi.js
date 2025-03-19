@@ -32,8 +32,8 @@ export const getCourseByStatus = async (course_status) => {
 }
 
 
-export const getCourseByStatusWithLimit = async (course_status, page, limit) => {
-  const res = await axiosInstance.get(`/courses/course_status/${course_status}/limited`, { params: { page, limit } });
+export const getCourseByStatusWithLimit = async (course_status, page, limit, searchQuery) => {
+  const res = await axiosInstance.get(`/courses/course_status/${course_status}/limited`, { params: { page, limit, searchQuery } });
   return res.data;
 }
 
@@ -94,4 +94,11 @@ export const updateCourseAssignment = async (course_id, change) => {
 export const deleteCourse = async (course_id) => {
   const res = await axiosInstance.delete(`/courses/${course_id}`)
   return res;
+}
+
+
+// get all the users
+export const getTotalCourses = async () => {
+  const res = await axiosInstance.get('/totalCourses');
+  return res.data;
 }

@@ -89,4 +89,11 @@ const updateTeacherStatus = async (req, res) => {
 }
 
 
-module.exports = { createTeacher, getTeachers, getTeacherById, getTeacherByStatus, getTeacherByEmail, updateTeacherStatus };
+module.exports = { 
+  createTeacher, 
+  getTeachers, 
+  getTeacherById, 
+  getTeacherByStatus, 
+  getTeacherByEmail, 
+  updateTeacherStatus 
+};

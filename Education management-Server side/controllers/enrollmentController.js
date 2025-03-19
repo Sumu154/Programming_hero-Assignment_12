@@ -73,4 +73,24 @@ const getEnrollmentByEmail = async (req, res) => {
   }
 };
 
-module.exports = { createEnrollment, getEnrollments, getEnrollmentByEmail };
+const getTotalEnrollments = async (req, res) => {
+  try{
+    const totalEnrollments = await enrollmentModel.aggregate([
+      { $unwind: "$course_enrolled" }, // Breaks down each array element into a separate document
+      { $count: "total_enrollments" }  // Counts all enrollments
+    ]);
+    console.log(totalEnrollments)
+    res.status(200).json(totalEnrollments[0]?.total_enrollments || 0);
+  } 
+  catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+}
+
+
+module.exports = { 
+  createEnrollment, 
+  getEnrollments, 
+  getEnrollmentByEmail, 
+  getTotalEnrollments 
+};

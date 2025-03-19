@@ -102,5 +102,25 @@ const getAssignmentSubmissionPerCourse = async (req, res) => {
 }
 
 
+// total user
+const getTotalAssignments = async (req, res) => {
+  try{
+    const totalAssignments = await assignmentModel.countDocuments();
+    res.status(200).json(totalAssignments);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
 
-module.exports = { createAssignment, getAssignments, getAssignmentById, getAssignmentsByCourse, updateAssignmentSubmission, getAssignmentSubmissionPerCourse };
+
+
+module.exports = { 
+  createAssignment, 
+  getAssignments, 
+  getAssignmentById, 
+  getAssignmentsByCourse, 
+  updateAssignmentSubmission, 
+  getAssignmentSubmissionPerCourse,
+  getTotalAssignments
+};

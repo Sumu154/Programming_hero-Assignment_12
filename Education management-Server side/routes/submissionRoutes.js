@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { createSubmission, getSubmissions, getSubmissionById, getSubmissionsByCourse } = require('../controllers/SubmissionController');
+const { 
+  createSubmission, 
+  getSubmissions, 
+  getSubmissionById, 
+  getSubmissionsByCourse
+} = require('../controllers/SubmissionController');
 
 
 // create a submission -> post
