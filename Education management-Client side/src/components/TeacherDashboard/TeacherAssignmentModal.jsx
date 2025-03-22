@@ -27,7 +27,7 @@ const TeacherAssignmentModal = ( { course_id, modalOpen, setModalOpen } ) => {
     const assignment_title = form.get('assignment_title');
     const assignment_description = form.get('assignment_description');
     const assignment_submission = 0;
-    const assignment = { course_id, teacher_email, assignment_title, assignment_deadline, assignment_description, assignment_submission };
+    const assignment = { course:course_id, teacher_email, assignment_title, assignment_deadline, assignment_description, assignment_submission };
     //console.log(assignment);
 
     // databse e add

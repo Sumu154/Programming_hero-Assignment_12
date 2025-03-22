@@ -3,7 +3,7 @@ const assignmentModel = require('../models/assignmentModel');
 
 const createAssignment = async (req, res) => {
   try{
-    // console.log('post api hitting');
+    // //console.log('post api hitting');
     const assignment = req.body;
 
     const createdAssignment = await assignmentModel.create(assignment);
@@ -17,7 +17,7 @@ const createAssignment = async (req, res) => {
 
 // get all the assignments
 const getAssignments = async (req, res) => {
-  // console.log('get all assignments');
+  // //console.log('get all assignments');
   try{
     const assignments = await assignmentModel.find();
     res.status(200).json(assignments);
@@ -31,7 +31,7 @@ const getAssignments = async (req, res) => {
 const getAssignmentById = async (req, res) => {
   try{
     const id = req.params.id;
-    // console.log(id);
+    // //console.log(id);
     const assignment = await assignmentModel.findOne( {_id: id} );
     res.status(200).json(assignment);
   }
@@ -45,8 +45,8 @@ const getAssignmentById = async (req, res) => {
 const getAssignmentsByCourse = async (req, res) => {
   try{
     const { course_id } = req.params;
-    // console.log(id);
-    const assignments = await assignmentModel.find( { course_id } );
+    // //console.log(id);
+    const assignments = await assignmentModel.find( { course:course_id } );
     res.status(200).json(assignments);
   }
   catch(e){
@@ -59,7 +59,7 @@ const getAssignmentsByCourse = async (req, res) => {
 const updateAssignmentSubmission = async (req, res) => {
   try{
     const { assignment_id } = req.params;
-    console.log(assignment_id);
+    //console.log(assignment_id);
 
     const assignment = await assignmentModel.findOne({ _id:assignment_id });
 
@@ -77,23 +77,19 @@ const updateAssignmentSubmission = async (req, res) => {
 const getAssignmentSubmissionPerCourse = async (req, res) => {
   try{
     const { course_id } = req.params;
+    console.log('in', course_id)
 
-    const totalSubmissions = await assignmentModel.aggregate([
-      {
-        $match: { course_id } // Filter assignments for the given course_id
-      },
-      {
-        $group: {
-          _id: null,  // kono kicur opor group bananor drkar nei
-          total_submissions: { $sum: "$assignment_submission" }
-        }
+    const totalAssignments = await assignmentModel.find({course:course_id});
+
+    let totalSubmissions = 0;
+    totalAssignments.forEach(it => {
+      if(it.assignment_submission && typeof it.assignment_submission === 'number') {
+        totalSubmissions += it.assignment_submission;
       }
-    ]);
-    console.log(totalSubmissions);
+    });
 
-    // If no submissions found, return 0
-    const total = totalSubmissions.length>0 ? totalSubmissions[0].total_submissions : 0;
-    res.status(200).json(total);
+    res.status(200).json(totalSubmissions);
+
 
   }
   catch(e){
@@ -102,11 +98,13 @@ const getAssignmentSubmissionPerCourse = async (req, res) => {
 }
 
 
+
+
 // total user
-const getTotalAssignments = async (req, res) => {
+const getTotalAssignmentsCount = async (req, res) => {
   try{
-    const totalAssignments = await assignmentModel.countDocuments();
-    res.status(200).json(totalAssignments);
+    const totalAssignmentsCount = await assignmentModel.countDocuments();
+    res.status(200).json(totalAssignmentsCount);
   }
   catch(e){
     res.status(500).json({ message: 'Internal server error: ', error:e.message });
@@ -122,5 +120,5 @@ module.exports = {
   getAssignmentsByCourse, 
   updateAssignmentSubmission, 
   getAssignmentSubmissionPerCourse,
-  getTotalAssignments
+  getTotalAssignmentsCount
 };

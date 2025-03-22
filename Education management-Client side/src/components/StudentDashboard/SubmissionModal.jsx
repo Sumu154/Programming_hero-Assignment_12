@@ -13,6 +13,7 @@ const SubmissionModal = ( { assignment_id, course_id, modalOpen, setModalOpen } 
   const { user } = useContext(AuthContext);
   const user_email = user.email;
   // //console.log('assignment_id: ', assignment_id);
+  console.log(course_id);
 
 
   const handleAssignmentSubmission = async (e) => {
@@ -25,8 +26,8 @@ const SubmissionModal = ( { assignment_id, course_id, modalOpen, setModalOpen } 
     const submission_link = form.get('submission_file');
     const submission_grade = 'not graded';
 
-    const submission = { user_email, course_id, assignment_id, submission_link, submission_grade };
-    //console.log(submission);
+    const submission = { user_email, course:course_id, assignment_id, submission_link, submission_grade };
+    console.log(submission);
     // database e stored
     const data1 = await createSubmission(submission)
     //console.log(data1);
@@ -54,7 +55,7 @@ const SubmissionModal = ( { assignment_id, course_id, modalOpen, setModalOpen } 
       onRequestClose={() => setModalOpen(false)}
       contentLabel="Example Modal"
       className="bg-white p-6 rounded-lg w-[300px] sm:w-[360px] md:w-[390px] lg:w-[420px] mx-auto mt-20 shadow-lg"
-      overlayClassName="fixed inset-0 bg-dark/60 flex justify-center items-center">
+      overlayClassName="fixed inset-0 bg-dark/30 flex justify-center items-center">
 
         <h3 className="font-Montserrat text-center font-semibold opacity-80 text-xl md:text-2xl mb-7"> Submit Assignment  </h3>
         <form onSubmit={handleAssignmentSubmission} action="">

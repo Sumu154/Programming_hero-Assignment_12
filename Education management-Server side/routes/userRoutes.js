@@ -3,6 +3,7 @@ const router = express.Router();
 const { 
   createUser, 
   getUsers, 
+  getUsersWithLimit,
   getUserById, 
   getUserByEmail, 
   updateUserRoleAdmin, 
@@ -16,6 +17,8 @@ const {
 router.post('/users', createUser);
 // show all users -> get
 router.get('/users', getUsers);
+// get users with limit
+router.get('/users/limited', getUsersWithLimit)
 
 
 // get users by email

@@ -10,7 +10,6 @@ const AdminClassPage = () => {
       </Helmet>
 
       <div className=''>
-        <h3 className='font-Montserrat text-xl sm:text-2xl lg:text-3xl text-dark/90 font-semibold mb-8'> All Classes </h3>
         <AdminClasses></AdminClasses>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { getPaymentIntent } from '../../apis/paymentApi';
 import { createEnrollment } from '../../apis/enrollmentApi';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-toastify';
-import { getTeacherName } from '../../apis/courseApi';
+import { getTeacherName, updateUserEnrollment } from '../../apis/courseApi';
 
 
 const PaymentForm = ( { course_id, course_price } ) => {
@@ -94,6 +94,10 @@ const PaymentForm = ( { course_id, course_price } ) => {
 
         // payment successful hole ja korbo
         setSuccess(true);
+          //  enrollement count 1 barate hbe
+        const data = await updateUserEnrollment(course_id);
+        console.log(data);
+        
         Swal.fire({
           title: "Thank You! Payment Completed.",
           icon: "success",

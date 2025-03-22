@@ -38,7 +38,7 @@ const StudentAssignmentTable = ( { course_id, assignments } ) => {
           <tbody>
             {/* row 1 */}
             { assignments.map((it, index) => { 
-              const {  _id:assignment_id, course_id, assignment_title, assignment_description, assignment_deadline } = it;
+              const {  _id:assignment_id, course:course_id, assignment_title, assignment_description, assignment_deadline } = it;
 
               return (
                 <tr key={it}>

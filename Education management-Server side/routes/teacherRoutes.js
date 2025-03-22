@@ -3,6 +3,7 @@ const router = express.Router();
 const { 
   createTeacher, 
   getTeachers, 
+  getTeachersWithLimit,
   getTeacherById, 
   getTeacherByStatus, 
   getTeacherByEmail, 
@@ -14,6 +15,8 @@ const {
 router.post('/teachers', createTeacher);
 // show all teachers -> get
 router.get('/teachers', getTeachers);
+// get teacher with limit
+router.get('/teachers/limited', getTeachersWithLimit)
 // get teacher by id
 router.get('/teachers/:teacher_id', getTeacherById);
 // get teacher by email

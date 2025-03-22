@@ -13,6 +13,12 @@ export const getTeachers = async () => {
   return res.data;
 }
 
+// get all the teachers
+export const getTeachersWithLimit = async ( page, limit, searchQuery ) => {
+  const res = await axiosInstance.get('/teachers/limited',  { params: { page, limit, searchQuery } } );
+  return res.data;
+}
+
 // get teacher by email
 export const getTeacherByEmail = async (teacher_email) => {
   const res = await axiosInstance.get(`/teachers/teacher_email/${teacher_email}`);

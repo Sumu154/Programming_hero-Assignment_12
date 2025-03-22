@@ -13,6 +13,13 @@ export const getUsers = async () => {
   return res.data;
 }
 
+// get users with limit
+export const getUsersWithLimit = async () => {
+  const res = await axiosInstance.get('/users/limited');
+  return res.data;
+}
+
+
 // get user object of specific email
 export const getUserByEmail = async (user_email) => {
   const res = await axiosInstance.get(`/users/user_email/${user_email}`);

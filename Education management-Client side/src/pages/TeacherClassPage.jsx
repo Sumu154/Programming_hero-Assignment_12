@@ -10,7 +10,6 @@ const TeacherClassPage = () => {
       </Helmet>
 
       <div className=''>
-        <h3 className='font-Montserrat text-xl sm:text-2xl lg:text-3xl text-dark/90 font-semibold mb-8'> My added classes </h3>
         <TeacherClasses></TeacherClasses>
       </div>
     </div>

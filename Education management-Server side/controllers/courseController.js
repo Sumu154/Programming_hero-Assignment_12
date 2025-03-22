@@ -3,7 +3,7 @@ const courseModel = require('../models/courseModel');
 
 const createCourse = async (req, res) => {
   try{
-    // console.log('post api hitting');
+    // //console.log('post api hitting');
     const course = req.body;
 
     const createdCourse = await courseModel.create(course);
@@ -17,7 +17,7 @@ const createCourse = async (req, res) => {
 
 // get all the courses
 const getCourses = async (req, res) => {
-  // console.log('get all courses');
+  // //console.log('get all courses');
   try{
     const courses = await courseModel.find();
     res.status(200).json(courses);
@@ -28,11 +28,43 @@ const getCourses = async (req, res) => {
 }
 
 
+const getCoursesWithLimit = async (req, res) => {
+  try{
+    const { page=0, limit=8, searchQuery="" } = req.query;
+    console.log(page, limit, searchQuery)
+
+    const pageNumber = parseInt(page);
+    const limitNumber = parseInt(limit);
+
+    const searchFilter = {
+      course_title: { $regex: searchQuery, $options: "i" }
+    }
+
+    //console.log(searchFilter);
+
+    const totalCourses = await courseModel.countDocuments(searchFilter);
+    //console.log(totalCourses)
+
+    // Fetch courses with pagination
+    const courses = await courseModel.find(searchFilter).skip(pageNumber*limitNumber).limit(limitNumber);
+    //console.log(courses)
+
+    res.status(200).json({ 
+      courses, 
+      totalPages: Math.ceil(totalCourses/limitNumber) // Send total pages count
+    });
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+
 // get a course by course_id
 const getCourseById = async (req, res) => {
   try{
     const id = req.params.course_id;
-    // console.log(id);
+    // //console.log(id);
     const course = await courseModel.findOne( {_id: id} );
     res.status(200).json(course);
   }
@@ -42,7 +74,38 @@ const getCourseById = async (req, res) => {
 }
 
 // get courses by user_email
+const getCourseByEmailWithLimit = async (req, res) => {
+  try{
+    const { page=0, limit=8, searchQuery="" } = req.query;
+    console.log(page, limit, searchQuery)
+    const teacher_email = req.params.teacher_email;
 
+    const pageNumber = parseInt(page);
+    const limitNumber = parseInt(limit);
+
+    const searchFilter = {
+      teacher_email, 
+      course_title: { $regex: searchQuery, $options: "i" }
+    }
+
+    //console.log(searchFilter);
+
+    const totalCourses = await courseModel.countDocuments(searchFilter);
+    //console.log(totalCourses)
+
+    // Fetch courses with pagination
+    const courses = await courseModel.find(searchFilter).skip(pageNumber*limitNumber).limit(limitNumber);
+    //console.log(courses)
+
+    res.status(200).json({ 
+      courses, 
+      totalPages: Math.ceil(totalCourses/limitNumber) // Send total pages count
+    });
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
 
 // get a course by status
 const getCourseByStatus = async (req, res) => {
@@ -60,7 +123,7 @@ const getCourseByStatus = async (req, res) => {
 const getCourseByStatusWithLimit = async (req, res) => {
   try{
     const { page=0, limit=8, searchQuery="" } = req.query;
-    console.log(page, limit, searchQuery)
+    //console.log(page, limit, searchQuery)
     const course_status = req.params.course_status;
 
     const pageNumber = parseInt(page);
@@ -71,14 +134,14 @@ const getCourseByStatusWithLimit = async (req, res) => {
       course_title: { $regex: searchQuery, $options: "i" }
     }
 
-    console.log(searchFilter);
+    //console.log(searchFilter);
 
     const totalCourses = await courseModel.countDocuments(searchFilter);
-    console.log(totalCourses)
+    //console.log(totalCourses)
 
     // Fetch courses with pagination
     const courses = await courseModel.find(searchFilter).skip(pageNumber*limitNumber).limit(limitNumber);
-    console.log(courses)
+    //console.log(courses)
 
     res.status(200).json({ 
       courses, 
@@ -177,14 +240,14 @@ const updateCourse = async (req, res) => {
      delete updateFields.user_enrollment;
      delete updateFields.course_status;
 
-     console.log(updateFields);
+     //console.log(updateFields);
 
     const updatedCourse = await courseModel.findOneAndUpdate(
       { _id:course_id },
       { $set: updateFields },  // Only update provided fields
       { new: true },
     )
-    console.log(updatedCourse);
+    //console.log(updatedCourse);
     res.status(200).json(updatedCourse);
   }
   catch(e){
@@ -202,6 +265,22 @@ const updateCourseStatus = async (req, res) => {
     const course = await courseModel.findOne({ _id:course_id })
     
     course.course_status = course_status;
+    await course.save();
+    res.status(200).json(course);
+  }
+  catch(e){
+    res.status(500).json({ message: 'Internal server error: ', error:e.message });
+  }
+}
+
+// update user_enrollment
+const updateUserEnrollment = async (req, res) => {
+  try{
+    const course_id = req.params.course_id;
+
+    const course = await courseModel.findOne({ _id:course_id })
+    
+    course.user_enrollment += 1;
     await course.save();
     res.status(200).json(course);
   }
@@ -239,7 +318,7 @@ const updateCourseAssignment = async (req, res) => {
 const deleteCourse = async (req, res) => {
   try{
     const id = req.params.course_id;
-    // console.log(id);
+    // //console.log(id);
 
     const deletedCourse = await courseModel.findByIdAndDelete(id);
     res.status(200).json(deletedCourse);
@@ -263,7 +342,9 @@ const getTotalCourses = async (req, res) => {
 module.exports = { 
   createCourse, 
   getCourses, 
+  getCoursesWithLimit,
   getCourseById, 
+  getCourseByEmailWithLimit,
   getCourseByStatus, 
   getCourseByStatusWithLimit,
   getPopularCourses, 
@@ -274,6 +355,7 @@ module.exports = {
   getTeacherName,
   updateCourse, 
   updateCourseStatus, 
+  updateUserEnrollment,
   updateCourseAssignment, 
   deleteCourse,
   getTotalCourses

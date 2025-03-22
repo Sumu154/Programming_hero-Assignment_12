@@ -3,7 +3,7 @@ const feedbackModel = require('../models/feedbackModel');
 
 const createFeedback = async (req, res) => {
   try{
-    // console.log('post api hitting');
+    // //console.log('post api hitting');
     const feedback = req.body;
 
     const createdFeedback = await feedbackModel.create(feedback);
@@ -17,7 +17,7 @@ const createFeedback = async (req, res) => {
 
 // get all the feedbacks
 const getFeedbacks = async (req, res) => {
-  // console.log('get all feedbacks');
+  // //console.log('get all feedbacks');
   try{
     const feedbacks = await feedbackModel.find();
     res.status(200).json(feedbacks);
@@ -31,7 +31,7 @@ const getFeedbacks = async (req, res) => {
 const getFeedbackWithLimit = async (req, res) => {
   try{
     const feedbacks = await feedbackModel.find().limit(3).populate('course', 'course_title');
-    console.log(feedbacks)
+    //console.log(feedbacks)
     res.status(200).json(feedbacks);
   }
   catch(e){
@@ -42,7 +42,7 @@ const getFeedbackWithLimit = async (req, res) => {
 const getFeedbackById = async (req, res) => {
   try{
     const id = req.params.id;
-    // console.log(id);
+    // //console.log(id);
     const feedback = await feedbackModel.findOne( {_id: id} );
     res.status(200).json(feedback);
   }

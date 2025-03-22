@@ -29,6 +29,7 @@ const AllClasses = () => {
 
 
   const handleSearchChange = async (query) => {
+    console.log(query);
     setSearchQuery(query)
   }
 

@@ -79,7 +79,7 @@ const getTotalEnrollments = async (req, res) => {
       { $unwind: "$course_enrolled" }, // Breaks down each array element into a separate document
       { $count: "total_enrollments" }  // Counts all enrollments
     ]);
-    console.log(totalEnrollments)
+    //console.log(totalEnrollments)
     res.status(200).json(totalEnrollments[0]?.total_enrollments || 0);
   } 
   catch (error) {

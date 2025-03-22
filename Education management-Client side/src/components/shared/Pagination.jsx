@@ -13,10 +13,10 @@ const Pagination = ( {pageCount, onPageChange} ) => {
         pageRangeDisplayed={2}    // majhe kotogula
         onPageChange={onPageChange}  
         containerClassName={"flex space-x-2"}  
-        pageClassName={"px-3 py-1 border rounded-full cursor-pointer"}  
+        pageClassName={"w-8 h-8 flex justify-center items-center border rounded-full cursor-pointer block"}  
         activeClassName={"bg-redd text-white"}  
-        previousClassName={"px-3 py-1 border rounded-full cursor-pointer"}  
-        nextClassName={"px-3 py-1 border rounded-full cursor-pointer"}  
+        previousClassName={"w-10 h-8 flex justify-center items-center border rounded-full cursor-pointer block"}  
+        nextClassName={"w-10 h-8 flex justify-center items-center border rounded-full cursor-pointer block"}  
       >
 
       </ReactPaginate>

@@ -7,9 +7,10 @@ import { getTeacherByEmail } from '../../apis/teacherApi';
 const DetailsClassSection = ( {course_id, teacher_name, teacher_email, course_price, user_enrollment, course_image} ) => {
   const [ teacher_image, setTeacher_image ] = useState('');
 
-  const fetchTeacher = () => {
-    const data = getTeacherByEmail(teacher_email);
-    const { teacher_image } = data;
+  const fetchTeacher = async () => {
+    const data = await getTeacherByEmail(teacher_email);
+    const { teacher_image } = data[0];
+    console.log(data)
     setTeacher_image(teacher_image);
   } 
   

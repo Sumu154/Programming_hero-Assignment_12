@@ -7,7 +7,7 @@ const {
   getAssignmentsByCourse, 
   updateAssignmentSubmission, 
   getAssignmentSubmissionPerCourse,
-  getTotalAssignments
+  getTotalAssignmentsCount
 } = require('../controllers/assignmentController');
 
 
@@ -28,7 +28,7 @@ router.get('/assignments/course_id/:course_id/total_submissions', getAssignmentS
 
 
 // get total assignments
-router.get('/totalAssignments', getTotalAssignments)
+router.get('/totalAssignments', getTotalAssignmentsCount)
 
 
 module.exports = router;

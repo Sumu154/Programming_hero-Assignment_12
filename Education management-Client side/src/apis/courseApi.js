@@ -13,6 +13,12 @@ export const getCourses = async () => {
   return res.data;
 }
 
+// get all the courses
+export const getCoursesWithLimit = async ( page, limit, searchQuery ) => {
+  const res = await axiosInstance.get('/courses/limited',  { params: { page, limit, searchQuery } } );
+  return res.data;
+}
+
 // get courses array of specific email
 // export const getCourseByEmail = async (course_email) => {
 //   const res = await axiosInstance.get(`/courses/email/${course_email}`);
@@ -22,6 +28,11 @@ export const getCourses = async () => {
 // get course object by specific course_id
 export const getCourseById = async (course_id) => {
   const res = await axiosInstance.get(`/courses/${course_id}`);
+  return res.data;
+}
+
+export const getCourseByEmailWithLimit = async (teacher_email, page, limit, searchQuery) => {
+  const res = await axiosInstance.get(`/courses/teacher_email/${teacher_email}/limited`, { params: { page, limit, searchQuery } });
   return res.data;
 }
 
@@ -75,6 +86,12 @@ export const getTeacherName = async (course_id) => {
 
 export const updateCourse = async (course_id, course) => {
   const res = await axiosInstance.patch(`/courses/${course_id}`, course);
+  return res.data;
+}
+
+export const updateUserEnrollment = async (course_id) => {
+  //console.log('in api', course_id, course_status);
+  const res = await axiosInstance.patch(`/courses/${course_id}/user_enrollment`)
   return res.data;
 }
 
