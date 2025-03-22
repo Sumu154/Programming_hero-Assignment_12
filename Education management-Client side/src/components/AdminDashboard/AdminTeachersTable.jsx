@@ -79,6 +79,8 @@ const AdminTeachersTable = () => {
           <span className='text-2xl text-dark/70 sm:hidden'> <IoIosSearch /> </span>
         </div>
       </div>
+
+      {/* teachers */}
       <div className="overflow-y-hidden overflow-x-auto rounded-t-2xl ">
         <table className="table table-zebra text-[12px] md:text-sm ">
           {/* head */}

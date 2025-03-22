@@ -33,6 +33,7 @@ const assignmentRoutes = require('./routes/assignmentRoutes')
 const enrollmentRoutes = require('./routes/enrollmentRoutes')
 const paymentRoutes = require('./routes/paymentRoutes')
 const submissionRoutes = require('./routes/submissionRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 
 app.use('/api', userRoutes)
@@ -43,6 +44,7 @@ app.use('/api', assignmentRoutes)
 app.use('/api', enrollmentRoutes)
 app.use('/api', paymentRoutes)
 app.use('/api', submissionRoutes)
+app.use('/api', authRoutes);
 
 
 

@@ -11,6 +11,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import ThemeToggle from '../shared/ThemeToggle';
 import { AuthContext } from '../../contexts/AuthProvider';
 import axios from 'axios';
+import { clearToken } from '../../apis/authApi';
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const Navbar = () => {
       await signOutUser();
 
       // token clear
-      // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/logout', {}, {withCredentials: true});
+      const res2 = await clearToken();
       // //console.log(res2.data);
 
       navigate('/auth/login');

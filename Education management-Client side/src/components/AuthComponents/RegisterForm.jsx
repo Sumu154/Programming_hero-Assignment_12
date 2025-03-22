@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axiosInstance from "../../config/axiosInstance";
 
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -12,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { validPassword } from '../../Utils/Validators/passValidator'
 import { LoadingContext } from '../../contexts/LoadingProvider';
 import { createUser } from '../../apis/userApi';
+import { CreateToken } from '../../apis/authApi';
 
 // https://i.ibb.co.com/23zmrZ5/5ad22761b9cf4196abba9a20dcc50c61.webp
 
@@ -50,9 +50,9 @@ const RegisterForm = () => {
       const res1 = await createNewUser(user_email, password);
       //console.log(res1.user);
 
-      // // token create korlam
-      // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
-      // //console.log(res2.data);
+      // token create korlam
+      const res2 = await CreateToken(user_email);
+      // console.log(res2.data);
 
       // update kore dibo
       await updateUserProfile({
@@ -69,7 +69,7 @@ const RegisterForm = () => {
       navigate('/');
 
       // database e add korbo ekhn
-      const res2 = await createUser(user);
+      const res3 = await createUser(user);
       // //console.log(res2.data);
     }
     catch(e){

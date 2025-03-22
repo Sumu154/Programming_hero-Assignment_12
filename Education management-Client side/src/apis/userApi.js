@@ -14,8 +14,8 @@ export const getUsers = async () => {
 }
 
 // get users with limit
-export const getUsersWithLimit = async () => {
-  const res = await axiosInstance.get('/users/limited');
+export const getUsersWithLimit = async ( page, limit, searchQuery ) => {
+  const res = await axiosInstance.get('/users/limited', { params: { page, limit, searchQuery } } );
   return res.data;
 }
 

@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-toastify';
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
+import { CreateToken } from '../../apis/authApi';
 
 const LoginForm = () => {
   const { setUser, signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -26,8 +27,8 @@ const LoginForm = () => {
       const res = await signInUser(user_email, password);
       const user = res.user;
 
-      // const res2 = await axios.post('https://marathon-management-server-side.vercel.app/api/jwt/login', email, {withCredentials: true});
-      // //console.log(res2.data);
+      const res2 = await CreateToken(user_email);      
+      //console.log(res2.data);
 
       setUser(user);
       toast.success('Successfully logged in!', {
