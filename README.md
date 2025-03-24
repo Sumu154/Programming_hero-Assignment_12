@@ -1,4 +1,4 @@
-# Educair - Education Management Platform
+# Educair-Education Management Platform
 
 
 Welcome to **Educair**, a dynamic and user-friendly education management platform designed to connect students, teachers, and administrators seamlessly. Whether you're a student enrolling in top-tier classes, a teacher sharing your expertise, or an admin managing the ecosystem, Educair offers a robust and engaging experience.
