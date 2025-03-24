@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-toastify';
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
-import { CreateToken } from '../../apis/authApi';
+import { createToken } from '../../apis/authApi';
 
 const LoginForm = () => {
   const { setUser, signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -27,17 +27,16 @@ const LoginForm = () => {
       const res = await signInUser(user_email, password);
       const user = res.user;
 
-      const res2 = await CreateToken(user_email);      
+      const res2 = await createToken(user_email);      
       //console.log(res2.data);
 
       setUser(user);
+      navigate('/');
       toast.success('Successfully logged in!', {
         position: "top-center",
         autoClose: 1000,
         theme: "dark",
       });
-      navigate('/');
-
     }
     catch(e){
       const errorCode = e.code;

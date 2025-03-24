@@ -16,27 +16,27 @@ export const AuthContext = createContext();
 
 const AuthProvider = ( {children} ) => {
   const [ user, setUser ] = useState(null);
-
   const { loading, setLoading } = useContext(LoadingContext);
 
+  
   // firebase functions 
   const createNewUser = async (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     try{
       return await createUserWithEmailAndPassword(auth, email, password);
     }
     finally{
-      setLoading(false);
+      // setLoading(false);
     }
   }
 
   const updateUserProfile = async (updatedData) => {
-    setLoading(true);
+    // setLoading(true);
     try{
       return await updateProfile(auth.currentUser, updatedData);
     }
     finally{
-      setLoading(false);
+      // setLoading(false);
     }
   }
 
@@ -51,12 +51,12 @@ const AuthProvider = ( {children} ) => {
   }
 
   const signInUser = async (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     try{
       return await signInWithEmailAndPassword(auth, email, password);
     }
     finally{
-      setLoading(false);
+      // setLoading(false);
     }
   }
 

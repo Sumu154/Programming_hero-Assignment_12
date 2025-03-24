@@ -3,6 +3,8 @@ import FeedbackCard from './FeedbackCard';
 import { Link } from 'react-router-dom';
 import { getFeedbackWithLimit } from '../../apis/feedbackApi';
 
+
+
 const FeedbackAssignments = () => {
 
   const [ feedbacks, setFeedbacks ] = useState([]);
@@ -16,6 +18,8 @@ const FeedbackAssignments = () => {
     fetchFeedbacks();
   }, [])
 
+  
+
 
   return (
     <div className='w-[90%] mx-auto dark:text-white mt-8 '>
@@ -25,11 +29,8 @@ const FeedbackAssignments = () => {
       
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 '>
         { feedbacks.map((it, index) => {
-          return <FeedbackCard key={index} feedback={it} ></FeedbackCard>
+          return <FeedbackCard  key={index} index={index} feedback={it} ></FeedbackCard>
         }) }
-        {/* <FeedbackCard></FeedbackCard>
-        <FeedbackCard></FeedbackCard>
-        <FeedbackCard></FeedbackCard> */}
       </div>
 
       <div className='flex justify-end mt-3'> <Link className='border-b-orange border-b-[2px] px-3'> See all </Link>  </div> 

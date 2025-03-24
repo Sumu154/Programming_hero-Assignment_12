@@ -1,8 +1,21 @@
 import axios from "axios";
 
+// Determine the base URL with proper fallback logic
+const getBaseURL = () => {
+  if(import.meta.env.VITE_API_URL_1){
+    return import.meta.env.VITE_API_URL_1;
+  } 
+  else if(import.meta.env.VITE_API_URL_2){
+    return import.meta.env.VITE_API_URL_2;
+  } 
+  else {
+    return "http://localhost:3000/api";
+  }
+};
+
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: 'https://education-management-server-side.vercel.app/api',
   headers: {
     "Content-Type": "application/json",
   },

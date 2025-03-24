@@ -315,18 +315,27 @@ const updateCourseAssignment = async (req, res) => {
 
 
 // delete a marathon by id
+// delete a course by id
 const deleteCourse = async (req, res) => {
-  try{
-    const id = req.params.course_id;
-    // //console.log(id);
-
-    const deletedCourse = await courseModel.findByIdAndDelete(id);
-    res.status(200).json(deletedCourse);
-  }
-  catch(e){
+  try {
+    const { course_id } = req.params;
+    
+    // This will trigger the pre("findOneAndDelete") middleware
+    const deletedCourse = await courseModel.findOneAndDelete({ _id: course_id });
+    
+    if(!deletedCourse) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    
+    res.status(200).json({ 
+      message: 'Course and all related data deleted successfully', 
+      deletedCourse 
+    });
+  } 
+  catch (e) {
     res.status(500).json({ message: 'Internal Server Error', error: e.message });
   }
-}
+};
 
 const getTotalCourses = async (req, res) => {
   try{

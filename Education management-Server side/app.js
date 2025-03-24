@@ -13,6 +13,8 @@ app.set('View engine', 'ejs');
 app.use(cors({
   origin: [
     'http://localhost:5173',
+    'https://educair-education-management.firebaseapp.com',
+    'https://educair-education-management.web.app'
   ],
   credentials: true,
 }));

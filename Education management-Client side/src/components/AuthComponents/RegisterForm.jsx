@@ -5,20 +5,17 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
-
+import { createUser } from '../../apis/userApi';
+import { createToken } from '../../apis/authApi';
 
 // utils import
 import { validPassword } from '../../Utils/Validators/passValidator'
-import { LoadingContext } from '../../contexts/LoadingProvider';
-import { createUser } from '../../apis/userApi';
-import { CreateToken } from '../../apis/authApi';
 
-// https://i.ibb.co.com/23zmrZ5/5ad22761b9cf4196abba9a20dcc50c61.webp
+
 
 const RegisterForm = () => {
   const navigate = useNavigate();
   const { createNewUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
-  const { loading, setLoading } = useContext(LoadingContext)
 
   const [error, setError] = useState('');
   const [passwordType, setPasswordType] = useState('password')
@@ -45,14 +42,15 @@ const RegisterForm = () => {
       return;
     }
 
-    // register kore fellam -> firebase
+    
     try{
+      // register -> firebase
       const res1 = await createNewUser(user_email, password);
-      //console.log(res1.user);
+      console.log(res1.user);
 
       // token create korlam
-      const res2 = await CreateToken(user_email);
-      // console.log(res2.data);
+      const res2 = await createToken(user_email);
+      console.log(res2.data);
 
       // update kore dibo
       await updateUserProfile({
@@ -70,13 +68,13 @@ const RegisterForm = () => {
 
       // database e add korbo ekhn
       const res3 = await createUser(user);
-      // //console.log(res2.data);
+      console.log(res3.data);
     }
     catch(e){
       const errorCode = e.code;
       const errorMessage = e.message;
       // //console.log(errorCode, errorMessage);
-      toast.error(`Error: ${errorCode} !`, {
+      toast.error(`Error: ${errorMessage} !`, {
         position: "top-center",
         autoClose: 1000,
         theme: "dark",

@@ -35,6 +35,7 @@ import ClassPaymentPage from "../pages/ClassPaymentPage";
 import AdminClassDetailsPage from "../components/AdminDashboard/AdminClassDetailsPage";
 import StudentOrdersPage from "../pages/StudentOrdersPage";
 import StudentDownloadAndPreviewInvoicePage from "../pages/StudentDownloadAndPreviewInvoicePage";
+import App from "../App";
 
 
 
@@ -163,6 +164,10 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: <Error></Error>
+  },
+  {
+    path: 'test',
+    element: <App></App>
   }
 ]);
 

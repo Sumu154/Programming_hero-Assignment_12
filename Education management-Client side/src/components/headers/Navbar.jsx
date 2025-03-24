@@ -10,8 +10,8 @@ import { RiMenu2Fill } from "react-icons/ri";
 
 import ThemeToggle from '../shared/ThemeToggle';
 import { AuthContext } from '../../contexts/AuthProvider';
-import axios from 'axios';
 import { clearToken } from '../../apis/authApi';
+
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -74,7 +74,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="w-9 h-9"> <img className='rounded-full' src={user.photoURL} alt="" />  </div>
                 <ul tabIndex={0} className="dropdown-content menu bg-dark/80 rounded-box z-1 w-44 p-2 shadow-sm">
-                  <li><a> <p className='border-b-[1px] border-white/20 pb-1 '> {user.displayName} </p> </a></li>
+                  <li className='border-b-[1px] border-white/20'><a> <p className=''> {user.displayName} </p> </a></li>
                   <li><a> <Link to='/dashboard'> <span className='flex items-center gap-2 hover:font-semibold'> <span className='text-xl'> <LuLayoutDashboard className='text-lg' /> </span> Dashboard </span> </Link>  </a></li>
                   <li><a> <Link onClick={handleSignOut} to=''> <span className='flex items-center gap-2 hover:font-semibold'> <span className='text-xl'> <IoMdLogOut /> </span> Logout </span> </Link>  </a></li>
                 </ul>

@@ -11,10 +11,9 @@ import { CourseContext } from '../../contexts/CourseProvider';
 import { deleteCourse } from '../../apis/courseApi';
 
 
-const TeacherClassCard = ( { course } ) => {
+const TeacherClassCard = ( { course, setCourses } ) => {
   const { _id:course_id, course_title, course_image, teacher_name, teacher_email, course_description, course_price, course_status, user_enrollment } = course;
 
-  const { courses, setCourses } = useContext(CourseContext)
 
   const handleDeleteCourse = async () => {
     ////console.log(id);

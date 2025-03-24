@@ -49,7 +49,7 @@ const TeacherClasses = () => {
       {/* courses */}
       <div className='grid grid-cols-1 min-[640px]:grid-cols-2 lg:grid-cols-3 gap-4'>
         { courses.map((it, index) => {
-          return <TeacherClassCard key={index} course={it}></TeacherClassCard>
+          return <TeacherClassCard key={index} course={it} setCourses={setCourses} ></TeacherClassCard>
         })}
         
       </div>
